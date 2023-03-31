@@ -26,20 +26,21 @@ let navigationNight = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/navig
 let map = L.map('mapid', {
 	center: [25, 0],
 	zoom: 3,
-	layers: [streets]
+	layers: [navigationNight]
 });
 
 // Create a base layer that holds all three maps.
 let baseMaps = {
+
+  "Night": navigationNight,
   "Streets": streets,
-  "Satellite": satelliteStreets,
-  "Night": navigationNight
+  "Satellite": satelliteStreets
 };
 
 // 1. Add a 2nd layer group for the tectonic plate data.
 let allEarthquakes = new L.LayerGroup();
 
-let tectonicPlates = new L.LayerGroup();
+let countryBoundaries = new L.LayerGroup();
 
 let majorEarthquakes = new L.LayerGroup();
 
@@ -47,9 +48,9 @@ let majorEarthquakes = new L.LayerGroup();
 
 // 2. Add a reference to the tectonic plates group to the overlays object.
 let overlays = {
+  "Countries": countryBoundaries,
   "Earthquakes": allEarthquakes,
-  'Tectonic Plates': tectonicPlates,
-  'Major Earthquakes': majorEarthquakes
+  "Major Earthquakes": majorEarthquakes
 };
 
 // Then we add a control to the map that will allow the user to change which
@@ -57,7 +58,7 @@ let overlays = {
 L.control.layers(baseMaps, overlays).addTo(map);
 
 // Retrieve the earthquake GeoJSON data.
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
+d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/custom3.geo.json").then(function(data) {
   console.log(data)
 
   // This function returns the style data for each of the earthquakes we plot on
@@ -66,30 +67,30 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   function styleInfo(feature) {
     return {
       opacity: 1,
-      fillOpacity: 1,
-      fillColor: getColor(feature.properties.mag),
+      fillOpacity: 0.7,
+      fillColor: getColor(feature.properties.pop_est),
       color: "#000000",
-      radius: getRadius(feature.properties.mag),
+      // radius: getRadius(feature.properties.mag),
       stroke: true,
       weight: 0.5
     };
   }
 
   // This function determines the color of the marker based on the magnitude of the earthquake.
-  function getColor(magnitude) {
-    if (magnitude > 5) {
+  function getColor(population) {
+    if (population > 1000000000) {
       return "#ea2c2c";
     }
-    if (magnitude > 4) {
+    if (population > 200000000) {
       return "#ea822c";
     }
-    if (magnitude > 3) {
+    if (population > 100000000) {
       return "#ee9c00";
     }
-    if (magnitude > 2) {
+    if (population > 50000000) {
       return "#eecc00";
     }
-    if (magnitude > 1) {
+    if (population > 10000000) {
       return "#d4ee00";
     }
     return "#98ee00";
@@ -116,7 +117,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
      // We create a popup for each circleMarker to display the magnitude and location of the earthquake
      //  after the marker has been created and styled.
      onEachFeature: function(feature, layer) {
-      layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
+      layer.bindPopup("Magnitude: " + feature.properties.name + "<br>Location: " + feature.properties.pop_est);
     }
   }).addTo(allEarthquakes);
 
@@ -124,7 +125,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   allEarthquakes.addTo(map);
 
 // 3. Retrieve the major earthquake GeoJSON data >4.5 mag for the week.
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson").then(function(data) {
+d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/custom3.geo.json").then(function(data) {
   console.log(data)
 
   // 4. Use the same style as the earthquake data.
@@ -132,9 +133,9 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geoj
     return {
       opacity: 1,
       fillOpacity: 1,
-      fillColor: getColorMajor(feature.properties.mag),
+      fillColor: getColorMajor(feature.properties.continent),
       color: "black",
-      radius: getRadiusMajor(feature.properties.mag),
+      // radius: getRadiusMajor(feature.properties.mag),
       stroke: true,
       weight: 1
     };
@@ -142,15 +143,18 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geoj
   
   
   // 5. Change the color function to use three colors for the major earthquakes based on the magnitude of the earthquake.
-  function getColorMajor(magnitude) {
-    if (magnitude > 6) {
-      return "#000000";
+  function getColorMajor(continent) {
+    if (continent == 'South America') {
+      return "yellow";
     }
-    if (magnitude >= 5) {
+    if (continent == 'North America') {
       return "#ea2c2c";
     }
-    if (magnitude < 5) {
+    if (continent == 'Asia') {
       return "#ea822c";
+    }
+    else {
+      return "none"
     }
   }
 
@@ -173,11 +177,11 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geoj
     style: styleInfoMajor,
 
     onEachFeature: function(feature, layer) {
-      layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place)
+      layer.bindPopup("Country: " + feature.properties.name + "<br>Population: " + feature.properties.pop_est)
     }
   }).addTo(majorEarthquakes);
   // 8. Add the major earthquakes layer to the map.
-  majorEarthquakes.addTo(map)
+  // majorEarthquakes.addTo(map)
   // 9. Close the braces and parentheses for the major earthquake data.
   });
 
@@ -244,16 +248,16 @@ legend.onAdd = function() {
 
 
   // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/custom.geo.json").then(function(data) {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/custom3.geo.json").then(function(data) {
     console.log(data)
 
     L.geoJson(data, {
       style: {
         'color': 'blue',
-        'weight': '2'
-      }}).addTo(tectonicPlates);
+        'weight': '1'
+      }}).addTo(countryBoundaries);
     
   });
-  tectonicPlates.addTo(map);
+  // countryBoundaries.addTo(map);
 });
 
