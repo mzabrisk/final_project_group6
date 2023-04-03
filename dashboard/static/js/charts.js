@@ -3,10 +3,10 @@ function init() {
   var selector = d3.select("#selDataset");
 
   // Use the list of sample names to populate the select options
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/merged_data.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/merged_json_data.json").then((data) => {
     console.log(data)
-    var sampleNames = ['abd', '123', 'xyz']
-    // var sampleNames = data.names;
+    // var sampleNames = ['abd', '123', 'xyz']
+    var sampleNames = data.country;
 
     sampleNames.forEach((sample) => {
       selector
@@ -19,7 +19,7 @@ function init() {
     // Use the first sample from the list to build the initial plots
     var firstSample = sampleNames[0];
     buildCharts(firstSample);
-    buildMetadata(firstSample);
+    // buildMetadata(firstSample);
   });
 }
 
@@ -28,55 +28,55 @@ init();
 
 function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
-  buildMetadata(newSample);
+  // buildMetadata(newSample);
   buildCharts(newSample);
   
 }
 
-// Demographics Panel 
-function buildMetadata(sample) {
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/merged_data.json").then((data) => {
-    var metadata = data.metadata;
-    // Filter the data for the object with the desired sample number
-    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
-    var result = resultArray[0];
+// // Demographics Panel 
+// function buildMetadata(sample) {
+//   d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/merged_json_data.json").then((data) => {
+//     var metadata = data.metadata;
+//     // Filter the data for the object with the desired sample number
+//     var resultArray = metadata.filter(sampleObj => sampleObj.country_name == sample);
+//     var result = resultArray[0];
    
-    // Use d3 to select the panel with id of `#sample-metadata`
-    var PANEL = d3.select("#sample-metadata");
+//     // Use d3 to select the panel with id of `#sample-metadata`
+//     var PANEL = d3.select("#sample-metadata");
 
-    // Use `.html("") to clear any existing metadata
-    PANEL.html("");
+//     // Use `.html("") to clear any existing metadata
+//     PANEL.html("");
 
-    // Use `Object.entries` to add each key and value pair to the panel
-    // Hint: Inside the loop, you will need to use d3 to append new
-    // tags for each key-value in the metadata.
-    Object.entries(result).forEach(([key, value]) => {
-      PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
-    });
+//     // Use `Object.entries` to add each key and value pair to the panel
+//     // Hint: Inside the loop, you will need to use d3 to append new
+//     // tags for each key-value in the metadata.
+//     Object.entries(result).forEach(([key, value]) => {
+//       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
+//     });
 
-  });
-}
+//   });
+// }
 
 // Deliverable 1: 1. Create the buildChart function.
 function buildCharts(sample) {
   // Deliverable 1: 2. Use d3.json to load the samples.json file 
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/merged_data.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/merged_json_data.json").then((data) => {
     console.log(data);
 
     // Deliverable 1: 3. Create a variable that holds the samples array.
-    var samples_array = data.samples
-    console.log(samples_array)
+    var country_data = data.metadata
+    console.log(country_data)
 
     // Deliverable 1: 4. Create a variable that filters the samples for the object with the desired sample number.
-    var filteredSample = samples_array.filter(sampleObj => sampleObj.id == sample)
-    console.log(filteredSample)
+    var filteredData = country_data.filter(sampleObj => sampleObj.country_name == sample)
+    console.log(filteredData)
 
     // Deliverable 3: 1. Create a variable that filters the metadata array for the object with the desired sample number.
     var selectMetadata = data.metadata.filter(meta => meta.id == sample)
     console.log(selectMetadata)
 
     // Deliverable 1: 5. Create a variable that holds the first sample in the array.
-    var result = filteredSample[0]
+    var result = filteredData
     console.log(result)
 
     // Deliverable 3: 2. Create a variable that holds the first sample in the metadata array.
@@ -84,11 +84,11 @@ function buildCharts(sample) {
     console.log(metaResult)
 
     // Deliverable 1: 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otuIds = result.otu_ids
-    console.log(otuIds)
-    var otuLabels = result.otu_labels
+    var co2 = result.co2_emissions
+    console.log(co2)
+    var cigarettes = result.otu_labels
     console.log(otuLabels)
-    var sampleValues = result.sample_values
+    var cancer = result.sample_values
     console.log(sampleValues)
 
     // Deliverable 3: 3. Create a variable that holds the washing frequency.
