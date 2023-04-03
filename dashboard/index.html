@@ -24,7 +24,9 @@
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+          <a class="navbar-brand" href="index.html">Home</a>
           <a class="navbar-brand" href="map.html">World Map</a>
+          <a class="navbar-brand" href="references.html">References</a>
         </nav>
         <!-- Jumbotron -->
         <div class="jumbotron">
@@ -48,9 +50,13 @@
     
         <!-- </div> -->
         <div class= "container">
+          
             <div class= "row">
                 <div class= "col-md-6">
-                <div id= "plot1"></div>
+                  <div class="well">
+                    <h5>Test Subject ID No.:</h5>
+                    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                  </div>
                 </div>
                 <div class= "col-md-6">
                     <div id= "plot2"></div>
@@ -79,12 +85,13 @@
    
 
     <!-- Leaflet JavaScript -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    <!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
+        crossorigin=""></script> -->
     <!-- API key -->
     <script type="text/javascript" src="static/js/config.js"></script>
  
-    <script type="text/javascript" src="static/js/index_logic.js"></script>
+    <!-- <script type="text/javascript" src="static/js/index_logic.js"></script> -->
+    <script type="text/javascript" src="static/js/charts.js"></script>
 </body>
 </html>

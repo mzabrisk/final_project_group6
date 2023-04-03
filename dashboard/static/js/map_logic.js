@@ -117,7 +117,7 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_da
      // We create a popup for each circleMarker to display the magnitude and location of the earthquake
      //  after the marker has been created and styled.
      onEachFeature: function(feature, layer) {
-      layer.bindPopup("Magnitude: " + feature.properties.name + "<br>Location: " + feature.properties.pop_est);
+      layer.bindPopup("Country: " + feature.properties.name + "<br>Population: " + feature.properties.pop_est);
     }
   }).addTo(allEarthquakes);
 
