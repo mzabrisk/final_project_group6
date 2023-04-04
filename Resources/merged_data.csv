@@ -1,4 +1,4 @@
-country_code,country_name,year,co2_emissions,merge_id,age-standardized_death_rate_per_100k_male,age-standardized_death_rate_per_100k_female,Sales of cigarettes per adult per day (International Smoking Statistics (2017)) 
+country_code,country_name,year,co2_emissions,merge_id,male_death_rate,female_death_rate,cigarette_sales
 ARM,Armenia,1990,19850.0,ARM_1990,51.36,7.4,11.89999961853027
 ARM,Armenia,1991,20690.0,ARM_1991,49.99,6.01,9.300000190734863
 ARM,Armenia,1992,10900.0,ARM_1992,45.04,7.44,4.900000095367432

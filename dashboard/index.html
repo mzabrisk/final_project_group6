@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryce_Keven_Heidi_Matt_FinalProject</title>
+    <!-- Leaflet CSS -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/> -->
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"
+      />
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body class="bg-dark">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+          <a class="navbar-brand" href="index.html">Home</a>
+          <a class="navbar-brand" href="map.html">World Map</a>
+          <a class="navbar-brand" href="references.html">References</a>
+        </nav>
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+          <h1 class="display-4">Lung Cancer Around The World</h1>
+        </div>
+  
+        <!-- Article title and paragraph -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4 article-title">
+              <h3>How are emissions and cigarette sales linked to lung cancer rates?</h3>
+            </div>
+            <div class="col-md-8 article-p">
+              <p>
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT 
+                TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT TEXT ABOUT OUR PROJECT  
+              </p>
+            </div>
+          </div>
+        </div>
+
+    
+        <!-- </div> -->
+        <div class= "container">
+          
+            <div class= "row">
+                <div class= "col-md-2">
+                  <div class="well">
+                    <h5>Select Country.:</h5>
+                    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                  </div>
+                </div>
+                <div class= "col-md-10">
+                    <div id= "plot2"></div>
+                </div>
+            </div>
+            <div class= "row">
+                <div class= "col-md-6">
+                <div id= "plot3"></div>
+                </div>
+                <div class= "col-md-6">
+                    <div id= "plot4"></div>
+                </div>
+            </div>
+            <div class= "row">
+                <div class= "col-md-6">
+                <div id= "plot5"></div>
+                </div>
+                <div class= "col-md-6">
+                    <div id= "plot6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API key -->
+    <script type="text/javascript" src="static/js/config.js"></script>
+ 
+    <script type="text/javascript" src="static/js/charts.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</body>
+</html>
