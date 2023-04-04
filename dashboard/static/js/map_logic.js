@@ -1,14 +1,14 @@
-// Add console.log to check to see if our code is working.
+// check to see if code is working.
 console.log("working");
 
-// We create the tile layer that will be the background of our map.
+// Create tile layer
 let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
 	maxZoom: 18,
 	accessToken: API_KEY
 });
 
-// We create the second tile layer that will be the background of our map.
+// 2nd tile layer
 let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
 	maxZoom: 18,
@@ -22,7 +22,7 @@ let navigationNight = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/navig
 	accessToken: API_KEY
 });
 
-// Create the map object with center, zoom level and default layer.
+// Create map object
 let map = L.map('mapid', {
 	center: [25, 0],
 	zoom: 3,
@@ -37,7 +37,7 @@ let baseMaps = {
   "Satellite": satelliteStreets
 };
 
-// 1. Add a 2nd layer group for the tectonic plate data.
+// Ad layer groups
 let allEarthquakes = new L.LayerGroup();
 
 let countryBoundaries = new L.LayerGroup();
@@ -46,37 +46,33 @@ let majorEarthquakes = new L.LayerGroup();
 
 
 
-// 2. Add a reference to the tectonic plates group to the overlays object.
+// add layers to overlay object
 let overlays = {
   "Countries": countryBoundaries,
   "Earthquakes": allEarthquakes,
   "Major Earthquakes": majorEarthquakes
 };
 
-// Then we add a control to the map that will allow the user to change which
-// layers are visible.
+// add control to map
 L.control.layers(baseMaps, overlays).addTo(map);
 
-// Retrieve the earthquake GeoJSON data.
+// Retrieve the country geojson data
 d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/custom3.geo.json").then(function(data) {
   console.log(data)
 
-  // This function returns the style data for each of the earthquakes we plot on
-  // the map. We pass the magnitude of the earthquake into two separate functions
-  // to calculate the color and radius.
+  // create map layer styling
   function styleInfo(feature) {
     return {
       opacity: 1,
       fillOpacity: 0.7,
       fillColor: getColor(feature.properties.pop_est),
       color: "#000000",
-      // radius: getRadius(feature.properties.mag),
       stroke: true,
       weight: 0.5
     };
   }
 
-  // This function determines the color of the marker based on the magnitude of the earthquake.
+  // Determine country color
   function getColor(population) {
     if (population > 1000000000) {
       return "#ea2c2c";
@@ -96,14 +92,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_da
     return "#98ee00";
   }
 
-  // This function determines the radius of the earthquake marker based on its magnitude.
-  // Earthquakes with a magnitude of 0 were being plotted with the wrong radius.
-  function getRadius(magnitude) {
-    if (magnitude === 0) {
-      return 1;
-    }
-    return magnitude * 4;
-  }
 
   // Creating a GeoJSON layer with the retrieved data.
   L.geoJson(data, {
