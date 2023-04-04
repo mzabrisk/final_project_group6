@@ -3,7 +3,7 @@ function init() {
   var selector = d3.select("#selDataset");
 
   // Use  country name list to populate dropdown menu
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/merged_json_data.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data.json").then((data) => {
     console.log(data)
 
     var sampleNames = data.country;
@@ -36,7 +36,7 @@ function optionChanged(newSample) {
 // Create the buildChart function.
 function buildCharts(sample) {
   // Use d3.json to load the raw .json file from github link
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/merged_json_data.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data.json").then((data) => {
     console.log(data);
 
     // Create variable to hold countries array.
