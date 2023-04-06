@@ -1,6 +1,7 @@
 function init() {
   // Grab  reference to dropdown selection
   var selector = d3.select("#selDataset");
+  var selector2 = d3.select("#selDataset2");
 
   // Use  country name list to populate dropdown menu
   d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data.json").then((data) => {
@@ -15,6 +16,14 @@ function init() {
         .property("value", sample);
     });
     console.log(selector)
+
+    sampleNames.forEach((sample) => {
+      selector2
+        .append("option")
+        .text(sample)
+        .property("value", sample);
+    });
+    console.log(selector2)
 
     // Use the first sample from the list to build the initial plots
     var firstSample = sampleNames[0];
@@ -33,14 +42,30 @@ function optionChanged(newSample) {
   buildAllCharts()
   
 }
+function optionChanged2(newSample) {
+  // Fetch new data each time a new sample is selected
+  buildCharts(newSample);
+  buildAllCharts()
+  
+}
+
+// NEED TO ADD A "CLEAR" DATA SET
+var chart = []
+d3.select("#clearButton").on("click", function() {
+  chart = []
+  buildCharts('Armenia')
+  console.log('click')
+});
 
 
+// function clearData()
 
 // Create the buildChart function.
 function buildCharts(sample) {
   // Use d3.json to load the raw .json file from github link
   d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data.json").then((data) => {
     console.log(data);
+    console.log(sample)
 
     // Create variable to hold countries array.
     var country_data = data.data
@@ -68,12 +93,13 @@ function buildCharts(sample) {
     console.log(years)
 
     // Creat chart for CO2 emissions
-    var co2chart = [{
+    var co2chart = {
       x: years,
       y: co2,
       type: 'scatter'
-    }
-    ];
+    };
+
+    chart.push(co2chart)
 
     var co2Layout = {
       title: {
@@ -94,7 +120,7 @@ function buildCharts(sample) {
     };
 
 
-    Plotly.newPlot("plot5", co2chart, co2Layout)
+    Plotly.newPlot("plot5", chart, co2Layout)
 
       // Creat chart for cigarette sales
       var cigaretteChart = [{
