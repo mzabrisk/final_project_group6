@@ -57,7 +57,7 @@ let overlays = {
 L.control.layers(baseMaps, overlays).addTo(map);
 
 // Retrieve the country geojson data
-d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/custom3.geo.json").then(function(data) {
+d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/custom3.geo.json").then(function(data) {
   console.log(data)
 
   // create map layer styling
@@ -113,7 +113,7 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_da
   allEarthquakes.addTo(map);
 
 // 3. Retrieve the major earthquake GeoJSON data >4.5 mag for the week.
-d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/custom3.geo.json").then(function(data) {
+d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/custom3.geo.json").then(function(data) {
   console.log(data)
 
   // 4. Use the same style as the earthquake data.
@@ -236,7 +236,7 @@ legend.onAdd = function() {
 
 
   // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/matt_dashboard/dashboard/static/resources/custom3.geo.json").then(function(data) {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/custom3.geo.json").then(function(data) {
     console.log(data)
 
     L.geoJson(data, {
