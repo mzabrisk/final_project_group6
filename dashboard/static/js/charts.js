@@ -55,7 +55,6 @@ d3.select("#clearButton").on("click", function() {
   console.log('click')
 });
 
-
 // function clearData()
 
 // Create the buildChart function.
@@ -197,7 +196,7 @@ function buildCharts(country) {
   
       var cancerLayout = {
         title: {
-          text: "Cigarette Sales",
+          text: "Lung Cancer Deaths",
           font: {
             color:'white'
           }
@@ -217,7 +216,7 @@ function buildCharts(country) {
         yaxis: {
           color:
           'white',
-          title: {text: "Number of Cigarettes Sold <br> (/person/day)"
+          title: {text: "Age Standardized Death Rate <br> (/100,000 people)"
           }
         }
       };
