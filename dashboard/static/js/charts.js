@@ -1,59 +1,57 @@
 function init() {
   // Grab  reference to dropdown selection
   var selector = d3.select("#selDataset");
-  var selector2 = d3.select("#selDataset2");
+  // var selector2 = d3.select("#selDataset2");
 
   // Use  country name list to populate dropdown menu
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data2.json").then((data) => {
     console.log(data)
 
-    var sampleNames = data.country;
+    var countryNames = data.country;
 
-    sampleNames.forEach((sample) => {
+    countryNames.forEach((country) => {
       selector
         .append("option")
-        .text(sample)
-        .property("value", sample);
+        .text(country)
+        .property("value", country);
     });
     console.log(selector)
 
-    sampleNames.forEach((sample) => {
-      selector2
-        .append("option")
-        .text(sample)
-        .property("value", sample);
-    });
-    console.log(selector2)
 
-    // Use the first sample from the list to build the initial plots
-    var firstSample = sampleNames[0];
-    buildCharts(firstSample);
+    // Use the first country from the list to build the initial plots
+    var firstCountry = countryNames[0];
+    buildCharts(firstCountry);
     // start page iwth charts showing all data
-    buildAllCharts(firstSample);
+    buildAllCharts(firstCountry);
   });
 }
 
 // Initialize the dashboard
 init();
 
-function optionChanged(newSample) {
-  // Fetch new data each time a new sample is selected
-  buildCharts(newSample);
+function optionChanged(newCountry) {
+  // Fetch new data each time a new country is selected
+  buildCharts(newCountry);
   buildAllCharts()
   
 }
-function optionChanged2(newSample) {
-  // Fetch new data each time a new sample is selected
-  buildCharts(newSample);
+function optionChanged2(newCountry) {
+  // Fetch new data each time a new country is selected
+  buildCharts(newCountry);
   buildAllCharts()
   
 }
 
-// NEED TO ADD A "CLEAR" DATA SET
-var chart = []
+// Clearing the data output
+var chartCO2 = []
+var chartCancer = []
+var chartCigs = []
+
 d3.select("#clearButton").on("click", function() {
-  chart = []
-  buildCharts('Armenia')
+  chartCO2 = []
+  chartCancer = []
+  chartCigs = []
+  buildCharts('CLEAR')
   console.log('click')
 });
 
@@ -61,21 +59,21 @@ d3.select("#clearButton").on("click", function() {
 // function clearData()
 
 // Create the buildChart function.
-function buildCharts(sample) {
+function buildCharts(country) {
   // Use d3.json to load the raw .json file from github link
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data2.json").then((data) => {
     console.log(data);
-    console.log(sample)
+    console.log(country)
 
     // Create variable to hold countries array.
     var country_data = data.data
     console.log(country_data)
 
     // create variable to hold data filtered for country
-    var filteredData = country_data.filter(sampleObj => sampleObj.country == sample)
+    var filteredData = country_data.filter(countryObj => countryObj.country == country)
     console.log(filteredData)
 
-    // Create a variable that holds the first sample in the array.
+    // Create a variable that holds the first country in the array.
     var result = filteredData[0]
     console.log(result)
 
@@ -96,10 +94,11 @@ function buildCharts(sample) {
     var co2chart = {
       x: years,
       y: co2,
-      type: 'scatter'
+      type: 'scatter',
+      name: country
     };
 
-    chart.push(co2chart)
+    chartCO2.push(co2chart)
 
     var co2Layout = {
       title: {
@@ -108,27 +107,37 @@ function buildCharts(sample) {
           color:'white'
         }
       },
+      legend: {
+        font: {
+          color: 'white'
+        }
+      },
       paper_bgcolor:'rgba(0,0,0,0)',
       plot_bgcolor:'rgba(0,0,0,0)',
       xaxis: {
-        color:'white'
+        color:'white',
+        title: {text: "Year"}
       },
       yaxis: {
         color:
-        'white'
+        'white',
+        title: {text: "Carbon Dioxide Emissions <br> (kiloton)"}
       }
     };
 
 
-    Plotly.newPlot("plot5", chart, co2Layout)
+    Plotly.newPlot("plot5", chartCO2, co2Layout)
 
       // Creat chart for cigarette sales
-      var cigaretteChart = [{
+      var cigaretteChart = {
         x: years,
         y: cigarettes,
-        type: 'scatter'
-      }
-      ];
+        type: 'scatter',
+        name: country
+      };
+      console.log(cigaretteChart)
+
+      chartCigs.push(cigaretteChart)
   
       var cigLayout = {
         title: {
@@ -137,65 +146,84 @@ function buildCharts(sample) {
             color:'white'
           }
         },
-        paper_bgcolor:'rgba(0,0,0,0)',
-        plot_bgcolor:'rgba(0,0,0,0)',
-        showlegened: false,
         legend: {
           font: {
             color: 'white'
           }
         },
+        paper_bgcolor:'rgba(0,0,0,0)',
+        plot_bgcolor:'rgba(0,0,0,0)',
         xaxis: {
-          color:'white'
+          color:'white',
+          title: {text: "Year"
+          }
         },
         yaxis: {
           color:
-          'white'
+          'white',
+          title: {text: "Number of Cigarettes Sold <br> (/person/day)"
+          }
         }
       };
   
   
-      Plotly.newPlot("plot7", cigaretteChart, cigLayout)
+      Plotly.newPlot("plot7", chartCigs, cigLayout)
 
       // Creat chart for lung cancer deaths 
       var cancerChart = {
         x: years,
         y: male_cancer,
         type: 'scatter',
-        name: 'Male'
+        name: 'Male',
+        name: `${country}-male`
       }
       ;
+      chartCancer.push(cancerChart)
 
       var cancerChart2 = {
         x: years,
         y: female_cancer,
         type: 'scatter',
-        name: 'Female'
+        name: 'Female',
+        line: {
+          dash: 'dot'
+        },
+        name: `${country}-female`
       }
       ;
+      chartCancer.push(cancerChart2)
 
-      cancers = [cancerChart, cancerChart2]
+      // cancers = [cancerChart, cancerChart2]
   
-      var cigLayout = {
+      var cancerLayout = {
         title: {
-          text: "Lung Cancer Deaths",
+          text: "Cigarette Sales",
           font: {
             color:'white'
+          }
+        },
+        legend: {
+          font: {
+            color: 'white'
           }
         },
         paper_bgcolor:'rgba(0,0,0,0)',
         plot_bgcolor:'rgba(0,0,0,0)',
         xaxis: {
-          color:'white'
+          color:'white',
+          title: {text: "Year"
+          }
         },
         yaxis: {
           color:
-          'white'
+          'white',
+          title: {text: "Number of Cigarettes Sold <br> (/person/day)"
+          }
         }
       };
   
   
-      Plotly.newPlot("plot6", cancers, cigLayout)
+      Plotly.newPlot("plot6", chartCancer, cancerLayout)
 
 
     });
@@ -206,7 +234,7 @@ function buildCharts(sample) {
 // Create the buildChart function.
 function buildAllCharts(stuff) {
   // Use d3.json to load the raw .json file from github link
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data2.json").then((data) => {
     console.log(data);
 
     // Create variable to hold countries array.
@@ -376,10 +404,10 @@ for (let i=0; i < country_data.length; i++) {
     };
     
     }
-      Plotly.newPlot("plot1", maleCancers, maleCancerLayout)
-      Plotly.newPlot("plot2", femaleCancers, femaleCancerLayout)
-      Plotly.newPlot("plot3", co2Emissions, co2Layout)
-      Plotly.newPlot("plot4", cigaretteSales, cigaretteLayout)
+      // Plotly.newPlot("plot1", maleCancers, maleCancerLayout)
+      // Plotly.newPlot("plot2", femaleCancers, femaleCancerLayout)
+      // Plotly.newPlot("plot3", co2Emissions, co2Layout)
+      // Plotly.newPlot("plot4", cigaretteSales, cigaretteLayout)
   
 
     });
