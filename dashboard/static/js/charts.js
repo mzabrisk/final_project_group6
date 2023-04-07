@@ -4,7 +4,7 @@ function init() {
   // var selector2 = d3.select("#selDataset2");
 
   // Use  country name list to populate dropdown menu
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data2.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data3.json").then((data) => {
     console.log(data)
 
     var countryNames = data.country;
@@ -51,17 +51,16 @@ d3.select("#clearButton").on("click", function() {
   chartCO2 = []
   chartCancer = []
   chartCigs = []
-  buildCharts('CLEAR')
+  buildCharts('')
   console.log('click')
 });
-
 
 // function clearData()
 
 // Create the buildChart function.
 function buildCharts(country) {
   // Use d3.json to load the raw .json file from github link
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data2.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data3.json").then((data) => {
     console.log(data);
     console.log(country)
 
@@ -197,7 +196,7 @@ function buildCharts(country) {
   
       var cancerLayout = {
         title: {
-          text: "Cigarette Sales",
+          text: "Lung Cancer Deaths",
           font: {
             color:'white'
           }
@@ -217,7 +216,7 @@ function buildCharts(country) {
         yaxis: {
           color:
           'white',
-          title: {text: "Number of Cigarettes Sold <br> (/person/day)"
+          title: {text: "Age Standardized Death Rate <br> (/100,000 people)"
           }
         }
       };
@@ -225,190 +224,6 @@ function buildCharts(country) {
   
       Plotly.newPlot("plot6", chartCancer, cancerLayout)
 
-
-    });
-}
-
-// CREATING CHART WITH ALL CO2 DATA
-
-// Create the buildChart function.
-function buildAllCharts(stuff) {
-  // Use d3.json to load the raw .json file from github link
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data2.json").then((data) => {
-    console.log(data);
-
-    // Create variable to hold countries array.
-    var country_data = data.data
-    console.log(country_data)
-
-// LOOP THROUGH ALL COUNTRY DATA AND ADD TO SAME CHART
-var maleCancers = []
-var femaleCancers = []
-var co2Emissions = []
-var cigaretteSales = []
-for (let i=0; i < country_data.length; i++) {
-    // Create variables that hold the values to be plotted
-    var co2 = country_data[i].co2
-    console.log(co2)
-    var cigarettes = country_data[i].cigarette_sales
-    console.log(cigarettes)
-    var female_cancer = country_data[i].female_dealth_rate
-    console.log(female_cancer)
-    var male_cancer = country_data[i].male_death_rate
-    console.log(male_cancer)
-    var years = country_data[i].years
-    console.log(years)
-  
-      
-      console.log(cancers)
-      // Creat chart for male lung cancer deaths 
-      var maleCancerTrace = {
-        x: years,
-        y: male_cancer,
-        type: 'scatter',
-        name: country_data[i].country
-      }
-      ;
-      maleCancers.push(maleCancerTrace)
-  
-      var maleCancerLayout = {
-        title: {
-          text: "Male Lung Cancer Deaths",
-          font: {
-            color:'white'
-          }
-        },
-        legend: {
-          font: {
-            color: 'white'
-          }
-        },
-        paper_bgcolor:'rgba(0,0,0,0)',
-        plot_bgcolor:'rgba(0,0,0,0)',
-        xaxis: {
-          color:'white',
-          title: {text: "Year"}
-        },
-        yaxis: {
-          color:
-          'white',
-          title: {text: "Age Standardized Death Rate <br> (/100,000 people)"}
-        }
-      };
-
-      // Creat chart for female lung cancer deaths 
-      var femaleCancerTrace = {
-        x: years,
-        y: female_cancer,
-        type: 'scatter',
-        name: country_data[i].country
-      }
-      ;
-      femaleCancers.push(femaleCancerTrace)
-  
-      var femaleCancerLayout = {
-        title: {
-          text: "Female Lung Cancer Deaths",
-          font: {
-            color:'white'
-          }
-        },
-        legend: {
-          font: {
-            color: 'white'
-          }
-        },
-        paper_bgcolor:'rgba(0,0,0,0)',
-        plot_bgcolor:'rgba(0,0,0,0)',
-        xaxis: {
-          color:'white',
-          title: {text: "Year"}
-        },
-        yaxis: {
-          color:
-          'white',
-          title: {text: "Age Standardized Death Rate <br> (/100,000 people)"}
-        }
-      };
-
-      // Creat chart for co2 emissions
-      var co2Trace = {
-        x: years,
-        y: co2,
-        type: 'scatter',
-        name: country_data[i].country
-      }
-      ;
-      co2Emissions.push(co2Trace)
-  
-      var co2Layout = {
-        title: {
-          text: "CO2 Emissions",
-          font: {
-            color:'white'
-          }
-        },
-        legend: {
-          font: {
-            color: 'white'
-          }
-        },
-        paper_bgcolor:'rgba(0,0,0,0)',
-        plot_bgcolor:'rgba(0,0,0,0)',
-        xaxis: {
-          color:'white',
-          title: {text: "Year"}
-        },
-        yaxis: {
-          color:
-          'white',
-          title: {text: "Carbon Dioxide Emissions <br> (kiloton)"}
-        }
-      };
-
-    // Creat chart for cigarette sales
-    var cigaretteTrace = {
-      x: years,
-      y: cigarettes,
-      type: 'scatter',
-      name: country_data[i].country
-    }
-    ;
-    cigaretteSales.push(cigaretteTrace)
-
-    var cigaretteLayout = {
-      title: {
-        text: "Cigarette Sales",
-        font: {
-          color:'white'
-        }
-      },
-      legend: {
-        font: {
-          color: 'white'
-        }
-      },
-      paper_bgcolor:'rgba(0,0,0,0)',
-      plot_bgcolor:'rgba(0,0,0,0)',
-      xaxis: {
-        color:'white',
-        title: {text: "Year"
-        }
-      },
-      yaxis: {
-        color:
-        'white',
-        title: {text: "Number of Cigarettes Sold <br> (/person/day)"
-        }
-      }
-    };
-    
-    }
-      // Plotly.newPlot("plot1", maleCancers, maleCancerLayout)
-      // Plotly.newPlot("plot2", femaleCancers, femaleCancerLayout)
-      // Plotly.newPlot("plot3", co2Emissions, co2Layout)
-      // Plotly.newPlot("plot4", cigaretteSales, cigaretteLayout)
-  
 
     });
 }
