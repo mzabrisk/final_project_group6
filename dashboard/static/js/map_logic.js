@@ -57,7 +57,7 @@ let overlays = {
 L.control.layers(baseMaps, overlays).addTo(map);
 
 // Retrieve the country geojson data
-d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/custom3.geo.json").then(function(data) {
+d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/project_map.geo.json").then(function(data) {
   console.log(data)
 
   // create map layer styling
