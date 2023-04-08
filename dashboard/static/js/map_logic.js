@@ -31,148 +31,229 @@ let map = L.map('mapid', {
 
 // Create a base layer that holds all three maps.
 let baseMaps = {
-
   "Night": navigationNight,
   "Streets": streets,
   "Satellite": satelliteStreets
 };
 
-// Ad layer groups
-let allEarthquakes = new L.LayerGroup();
-
-let countryBoundaries = new L.LayerGroup();
-
-let majorEarthquakes = new L.LayerGroup();
-
-
+// Add layer groups
+let lungCancerDeathRate = new L.LayerGroup();
+let co2Emissions = new L.LayerGroup();
+let cigaretteSales = new L.LayerGroup();
+let countryPopulation = new L.LayerGroup();
 
 // add layers to overlay object
 let overlays = {
-  "Countries": countryBoundaries,
-  "Earthquakes": allEarthquakes,
-  "Major Earthquakes": majorEarthquakes
+  "CO2 Emissions": co2Emissions,
+  "Lung Cancer Death Rate": lungCancerDeathRate,
+  "Cigarette Sales": cigaretteSales,
+  "Population": countryPopulation
 };
 
 // add control to map
 L.control.layers(baseMaps, overlays).addTo(map);
 
+//  from https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // Retrieve the country geojson data
 d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/project_map.geo.json").then(function(data) {
   console.log(data)
 
-  // create map layer styling
+  // POPULATION map layer
   function styleInfo(feature) {
     return {
       opacity: 1,
       fillOpacity: 0.7,
-      fillColor: getColor(feature.properties.pop_est),
+      fillColor: getColorPop(feature.properties.pop_est),
       color: "#000000",
       stroke: true,
       weight: 0.5
     };
   }
 
-  // Determine country color
-  function getColor(population) {
+  // Determine POPULATION country color
+  function getColorPop(population) {
     if (population > 1000000000) {
-      return "#ea2c2c";
+      return "black";
     }
     if (population > 200000000) {
-      return "#ea822c";
+      return "red";
     }
     if (population > 100000000) {
-      return "#ee9c00";
+      return "#cc7a00";
     }
     if (population > 50000000) {
-      return "#eecc00";
+      return "#ffcc66";
     }
     if (population > 10000000) {
-      return "#d4ee00";
+      return "yellow";
     }
-    return "#98ee00";
+    else{
+      return "green";
+    }
   }
 
-
-  // Creating a GeoJSON layer with the retrieved data.
+  // Creating POPULATION GeoJSON
   L.geoJson(data, {
-    	// We turn each feature into a circleMarker on the map.
-    	pointToLayer: function(feature, latlng) {
-      		// console.log(data);
-      		return L.circleMarker(latlng);
-        },
-      // We set the style for each circleMarker using our styleInfo function.
     style: styleInfo,
-     // We create a popup for each circleMarker to display the magnitude and location of the earthquake
-     //  after the marker has been created and styled.
      onEachFeature: function(feature, layer) {
-      layer.bindPopup("Country: " + feature.properties.name + "<br>Population: " + feature.properties.pop_est);
+      layer.bindPopup("Country: " + feature.properties.name + "<br>Population: " + numberWithCommas(feature.properties.pop_est));
     }
-  }).addTo(allEarthquakes);
+  }).addTo(countryPopulation);
 
-  // Then we add the earthquake layer to our map.
-  allEarthquakes.addTo(map);
 
-// 3. Retrieve the major earthquake GeoJSON data >4.5 mag for the week.
-d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/custom3.geo.json").then(function(data) {
-  console.log(data)
 
-  // 4. Use the same style as the earthquake data.
-  function styleInfoMajor(feature) {
+
+
+
+  // Create CO2 style function
+  function styleInfoCO2(feature) {
     return {
       opacity: 1,
-      fillOpacity: 1,
-      fillColor: getColorMajor(feature.properties.continent),
-      color: "black",
+      fillOpacity: 0.7,
+      fillColor: getColorCO2(feature.properties.co2_emissions),
+      color: "white",
       // radius: getRadiusMajor(feature.properties.mag),
       stroke: true,
       weight: 1
     };
   }
   
-  
-  // 5. Change the color function to use three colors for the major earthquakes based on the magnitude of the earthquake.
-  function getColorMajor(continent) {
-    if (continent == 'South America') {
+  // Color function to set country color by emissions
+  function getColorCO2(co2_emissions) {
+    if (co2_emissions == 0) {
+      return "none";
+    }
+    if (co2_emissions < 10000) {
+      return "green";
+    }
+    if (co2_emissions < 50000) {
       return "yellow";
     }
-    if (continent == 'North America') {
-      return "#ea2c2c";
+    if (co2_emissions < 100000) {
+      return "orange";
     }
-    if (continent == 'Asia') {
-      return "#ea822c";
+    if (co2_emissions < 1000000) {
+      return "#ff0000";
     }
     else {
-      return "none"
+      return "black"
     }
   }
 
-  // 6. Use the function that determines the radius of the earthquake marker based on its magnitude.
-  function getRadiusMajor(magnitude) {
-    if (magnitude === 0) {
-      return 1;
+  // Creating CO2 EMISSIONS Layer 
+  L.geoJson(data, {
+    style: styleInfoCO2,
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("Country: " + feature.properties.name  + "<br>CO2 Emissions (kiloton): " + numberWithCommas(feature.properties.co2_emissions.toFixed(0)))
     }
-    return magnitude * 4;
+  }).addTo(co2Emissions);
+  co2Emissions.addTo(map);
+
+
+
+
+
+
+
+  // Create DEATHS style function
+  function styleInfoDeaths(feature) {
+    return {
+      opacity: 1,
+      fillOpacity: 0.7,
+      fillColor: getColorDeaths((feature.properties.female_death_rate + feature.properties.male_death_rate)/2),
+      color: "white",
+      stroke: true,
+      weight: 1
+    };
   }
   
-  // 7. Creating a GeoJSON layer with the retrieved data that adds a circle to the map 
-  // sets the style of the circle, and displays the magnitude and location of the earthquake
-  //  after the marker has been created and styled.
-  L.geoJson(data, {
-    pointToLayer: function(feature, latlng) {
-      return L.circleMarker(latlng)
-    },
-
-    style: styleInfoMajor,
-
-    onEachFeature: function(feature, layer) {
-      layer.bindPopup("Country: " + feature.properties.name + "<br>Population: " + feature.properties.pop_est)
+  // Color function to set country color by DEATHS
+  function getColorDeaths(deaths) {
+    if (deaths == 0) {
+      return "none";
     }
-  }).addTo(majorEarthquakes);
-  // 8. Add the major earthquakes layer to the map.
-  // majorEarthquakes.addTo(map)
-  // 9. Close the braces and parentheses for the major earthquake data.
-  });
+    if (deaths < 20) {
+      return "green";
+    }
+    if (deaths < 25) {
+      return "yellow";
+    }
+    if (deaths < 30) {
+      return "orange";
+    }
+    if (deaths < 35) {
+      return "red";
+    }
+    else {
+      return "black"
+    }
+  }
 
+  // Creating DEATHS Layer 
+  L.geoJson(data, {
+    style: styleInfoDeaths,
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("Country: " + feature.properties.name  + "<br>Lung Cancer Death Rate (/100k people): " + ((feature.properties.female_death_rate + feature.properties.male_death_rate)/2).toFixed(2))
+    }
+  }).addTo(lungCancerDeathRate);
+
+
+
+
+
+
+
+  // Create CIGARETTE SALES style function
+  function styleInfoCigs(feature) {
+    return {
+      opacity: 1,
+      fillOpacity: 0.7,
+      fillColor: getColorCigs(feature.properties.cigarette_sales),
+      color: "white",
+      stroke: true,
+      weight: 1
+    };
+  }
+  
+  // Color function to set country color by CIGARETTE SALES
+  function getColorCigs(sales) {
+    if (sales == 0) {
+      return "none";
+    }
+    if (sales < 4) {
+      return "green";
+    }
+    if (sales < 5) {
+      return "yellow";
+    }
+    if (sales < 6) {
+      return "orange";
+    }
+    if (sales < 7) {
+      return "red";
+    }
+    else {
+      return "black"
+    }
+  }
+
+  // Creating DEATHS Layer 
+  L.geoJson(data, {
+    style: styleInfoCigs,
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("Country: " + feature.properties.name  + "<br>Cigarette Sales (/person/day): " + (feature.properties.cigarette_sales).toFixed(2))
+    }
+  }).addTo(cigaretteSales);
+
+
+
+
+
+// LEGEND STILL NEEDS WORK
   // Here we create a legend control object.
 let legend = L.control({
   position: "bottomright"
@@ -205,12 +286,11 @@ legend.onAdd = function() {
   // Finally, we our legend to the map.
   legend.addTo(map);
 
-// Creating legend for majorEarthquakes
+// Creating legend for co2Emissions
   let legend2 = L.control({
     position: "bottomleft"
   });
   
-  // Then add all the details for the legend
   legend2.onAdd = function() {
     let div = L.DomUtil.create("div", "info legend");
   
@@ -235,17 +315,17 @@ legend.onAdd = function() {
     legend2.addTo(map);
 
 
-  // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/custom3.geo.json").then(function(data) {
-    console.log(data)
+//   // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
+  // d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/project_map.geo.json").then(function(data) {
+  //   console.log(data)
 
-    L.geoJson(data, {
-      style: {
-        'color': 'blue',
-        'weight': '1'
-      }}).addTo(countryBoundaries);
+  //   L.geoJson(data, {
+  //     style: {
+  //       'color': 'blue',
+  //       'weight': '1'
+  //     }}).addTo(countryBoundaries);
     
-  });
+  // });
   // countryBoundaries.addTo(map);
 });
 
