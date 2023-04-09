@@ -1,0 +1,143 @@
+,Needed Estimating,Country Name,Country Code
+0,Y,Aruba,ABW
+2,Y,Afghanistan,AFG
+4,Y,Angola,AGO
+5,Y,Albania,ALB
+6,Y,Andorra,AND
+7,Y,Arab World,ARB
+8,Y,United Arab Emirates,ARE
+9,Y,Argentina,ARG
+10,Y,Armenia,ARM
+11,Y,American Samoa,ASM
+12,Y,Antigua and Barbuda,ATG
+15,Y,Azerbaijan,AZE
+21,Y,Bulgaria,BGR
+22,Y,Bahrain,BHR
+24,Y,Bosnia and Herzegovina,BIH
+25,Y,Belarus,BLR
+30,Y,Barbados,BRB
+31,Y,Brunei Darussalam,BRN
+32,Y,Bhutan,BTN
+36,Y,Central Europe and the Baltics,CEB
+37,Y,Switzerland,CHE
+38,Y,Channel Islands,CHI
+46,Y,Comoros,COM
+47,Y,Cabo Verde,CPV
+50,Y,Cuba,CUB
+51,Y,Curacao,CUW
+52,Y,Cayman Islands,CYM
+53,Y,Cyprus,CYP
+54,Y,Czechia,CZE
+55,Y,Germany,DEU
+56,Y,Djibouti,DJI
+57,Y,Dominica,DMA
+58,Y,Denmark,DNK
+64,Y,Europe & Central Asia (excluding high income),ECA
+65,Y,Europe & Central Asia,ECS
+67,Y,"Egypt, Arab Rep.",EGY
+69,Y,Eritrea,ERI
+71,Y,Estonia,EST
+72,Y,Ethiopia,ETH
+73,Y,European Union,EUU
+74,Y,Fragile and conflict affected situations,FCS
+78,Y,Faroe Islands,FRO
+79,Y,"Micronesia, Fed. Sts.",FSM
+82,Y,Georgia,GEO
+84,Y,Gibraltar,GIB
+85,Y,Guinea,GIN
+86,Y,"Gambia, The",GMB
+87,Y,Guinea-Bissau,GNB
+88,Y,Equatorial Guinea,GNQ
+90,Y,Grenada,GRD
+91,Y,Greenland,GRL
+93,Y,Guam,GUM
+99,Y,Croatia,HRV
+101,Y,Hungary,HUN
+106,Y,Indonesia,IDN
+108,Y,Isle of Man,IMN
+110,Y,Not classified,INX
+112,Y,"Iran, Islamic Rep.",IRN
+113,Y,Iraq,IRQ
+115,Y,Israel,ISR
+118,Y,Jordan,JOR
+120,Y,Kazakhstan,KAZ
+122,Y,Kyrgyz Republic,KGZ
+123,Y,Cambodia,KHM
+124,Y,Kiribati,KIR
+127,Y,Kuwait,KWT
+129,Y,Lao PDR,LAO
+130,Y,Lebanon,LBN
+131,Y,Liberia,LBR
+132,Y,Libya,LBY
+133,Y,St. Lucia,LCA
+135,Y,Least developed countries: UN classification,LDC
+137,Y,Liechtenstein,LIE
+143,Y,Lithuania,LTU
+145,Y,Latvia,LVA
+146,Y,"Macao SAR, China",MAC
+147,Y,St. Martin (French part),MAF
+149,Y,Monaco,MCO
+150,Y,Moldova,MDA
+152,Y,Maldives,MDV
+153,Y,Middle East & North Africa,MEA
+155,Y,Marshall Islands,MHL
+157,Y,North Macedonia,MKD
+158,Y,Mali,MLI
+159,Y,Malta,MLT
+160,Y,Myanmar,MMR
+161,Y,Middle East & North Africa (excluding high income),MNA
+162,Y,Montenegro,MNE
+163,Y,Mongolia,MNG
+164,Y,Northern Mariana Islands,MNP
+165,Y,Mozambique,MOZ
+166,Y,Mauritania,MRT
+167,Y,Mauritius,MUS
+171,Y,Namibia,NAM
+172,Y,New Caledonia,NCL
+179,Y,Nauru,NRU
+180,Y,New Zealand,NZL
+182,Y,Oman,OMN
+183,Y,Other small states,OSS
+188,Y,Palau,PLW
+190,Y,Poland,POL
+193,Y,"Korea, Dem. People's Rep.",PRK
+195,Y,Paraguay,PRY
+196,Y,West Bank and Gaza,PSE
+197,Y,Pacific island small states,PSS
+199,Y,French Polynesia,PYF
+200,Y,Qatar,QAT
+201,Y,Romania,ROU
+202,Y,Russian Federation,RUS
+205,Y,Saudi Arabia,SAU
+209,Y,Solomon Islands,SLB
+211,Y,El Salvador,SLV
+212,Y,San Marino,SMR
+213,Y,Somalia,SOM
+214,Y,Serbia,SRB
+216,Y,South Sudan,SSD
+218,Y,Small states,SST
+219,Y,Sao Tome and Principe,STP
+221,Y,Slovak Republic,SVK
+222,Y,Slovenia,SVN
+225,Y,Sint Maarten (Dutch part),SXM
+227,Y,Syrian Arab Republic,SYR
+228,Y,Turks and Caicos Islands,TCA
+231,Y,Europe & Central Asia (IDA & IBRD countries),TEC
+234,Y,Tajikistan,TJK
+235,Y,Turkmenistan,TKM
+237,Y,Timor-Leste,TLS
+238,Y,Middle East & North Africa (IDA & IBRD countries),TMN
+239,Y,Tonga,TON
+243,Y,Tunisia,TUN
+245,Y,Tuvalu,TUV
+246,Y,Tanzania,TZA
+248,Y,Ukraine,UKR
+252,Y,Uzbekistan,UZB
+254,Y,"Venezuela, RB",VEN
+255,Y,British Virgin Islands,VGB
+256,Y,Virgin Islands (U.S.),VIR
+257,Y,Vietnam,VNM
+258,Y,Vanuatu,VUT
+260,Y,Samoa,WSM
+261,Y,Kosovo,XKX
+262,Y,"Yemen, Rep.",YEM
