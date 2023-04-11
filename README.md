@@ -6,15 +6,18 @@ This analysis is based on 4 datasets obtained from kaggle. The Lung Cancer death
 
 
 ### Purpose of Analysis ###
-The purpose of the analysis is to determine if there is a relationship between cigarette sales, C02 emissions, and lung cancer. 
+The purpose of the analysis is to determine if cigarette sales and C02 emissions are linked to lung cancer.  
 
 ## ETL Process ##
-The data was combined into a database.
+The data was combined into a database. We used both the Pandas Library in Python and PostgreSQL to clean, sort, and merge our data to a state where we could use it for our visualizations and Machine Learning Models.
 
-Machine Learning Unsupervised
+## Dashboard
+We created a webpage to portrey our findings through visualizations and using the mapbox API. The webpage has different tabs of information, with the first giving a background of our analysis, the second utilizing the mapbox API showing countries CO2 emissions, the third gives references to our data sets we are using with a clickable link to read about the data, and the final tab 
 
-##
-Dashboard 
+
+## Challenges
+
+## Successes
 
 ## Results
 
