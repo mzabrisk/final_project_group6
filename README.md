@@ -31,5 +31,6 @@ We started with a unsupervised model using the K-means method and clustering. Ac
 ## Successes
 *Working as a team and making great progress even though we are all on different schedules. 
 ## Results
-This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. 
+This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. It is a little harder to tell if CO2 emissions have a direct correlation to lung cancer rates, but that is one of the things we wanted to find out so it was worth looking into. 
 ## Summary
+All in all, some things that have popped out to us so far is that CO2 emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancment in medicine?
