@@ -22,7 +22,6 @@ function init() {
     var firstCountry = countryNames[0];
     buildCharts(firstCountry);
     // start page iwth charts showing all data
-    buildAllCharts(firstCountry);
   });
 }
 
@@ -46,6 +45,7 @@ function optionChanged2(newCountry) {
 var chartCO2 = []
 var chartCancer = []
 var chartCigs = []
+var normChartCO2 = []
 
 d3.select("#clearButton").on("click", function() {
   chartCO2 = []
@@ -80,6 +80,8 @@ function buildCharts(country) {
     // Create variables that hold the values to be plotted
     var co2 = result.co2
     console.log(co2)
+    var co2norm = ((result.co2) / (result.land_area +1))
+    console.log(co2norm)
     var cigarettes = result.cigarette_sales
     console.log(cigarettes)
     var female_cancer = result.female_dealth_rate
@@ -192,7 +194,6 @@ function buildCharts(country) {
       ;
       chartCancer.push(cancerChart2)
 
-      // cancers = [cancerChart, cancerChart2]
   
       var cancerLayout = {
         title: {
@@ -223,6 +224,54 @@ function buildCharts(country) {
   
   
       Plotly.newPlot("plot6", chartCancer, cancerLayout)
+
+
+
+            // Creat chart for normalized co2 Emissions 
+
+            var normCO2Chart = {
+              x: years,
+              y: co2norm,
+              type: 'scatter',
+              // name: 'Female',
+              line: {
+                dash: 'dot'
+              },
+              name: country
+            }
+            ;
+            normChartCO2.push(normCO2Chart)
+      
+        
+            var normCO2Layout = {
+              title: {
+                text: "Normalized CO2 Emissions",
+                font: {
+                  color:'white'
+                }
+              },
+              legend: {
+                font: {
+                  color: 'white'
+                }
+              },
+              paper_bgcolor:'rgba(0,0,0,0)',
+              plot_bgcolor:'rgba(0,0,0,0)',
+              xaxis: {
+                color:'white',
+                title: {text: "Year"
+                }
+              },
+              yaxis: {
+                color:
+                'white',
+                title: {text: "CO2 Emissions <br> (kiloton/km^2)"
+                }
+              }
+            };
+        
+        
+            Plotly.newPlot("plot8", normChartCO2, normCO2Layout)
 
 
     });
