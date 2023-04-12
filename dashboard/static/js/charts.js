@@ -60,7 +60,7 @@ d3.select("#clearButton").on("click", function() {
 // Create the buildChart function.
 function buildCharts(country) {
   // Use d3.json to load the raw .json file from github link
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data3.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/cleaned_json_data.json").then((data) => {
     console.log(data);
     console.log(country)
 
@@ -80,7 +80,7 @@ function buildCharts(country) {
     // Create variables that hold the values to be plotted
     var co2 = result.co2
     console.log(co2)
-    var co2norm = ((result.co2) / (result.land_area +1))
+    var co2norm = ((result.co2) / (result.land_area))
     console.log(co2norm)
     var cigarettes = result.cigarette_sales
     console.log(cigarettes)
