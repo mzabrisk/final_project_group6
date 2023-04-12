@@ -51,6 +51,7 @@ d3.select("#clearButton").on("click", function() {
   chartCO2 = []
   chartCancer = []
   chartCigs = []
+  normChartCO2 = []
   buildCharts('')
   console.log('click')
 });
@@ -80,7 +81,7 @@ function buildCharts(country) {
     // Create variables that hold the values to be plotted
     var co2 = result.co2
     console.log(co2)
-    var co2norm = ((result.co2) / (result.land_area))
+    var co2norm = result.co2_norm
     console.log(co2norm)
     var cigarettes = result.cigarette_sales
     console.log(cigarettes)
@@ -223,7 +224,7 @@ function buildCharts(country) {
       };
   
   
-      Plotly.newPlot("plot6", chartCancer, cancerLayout)
+      Plotly.newPlot("plot8", chartCancer, cancerLayout)
 
 
 
@@ -271,7 +272,7 @@ function buildCharts(country) {
             };
         
         
-            Plotly.newPlot("plot8", normChartCO2, normCO2Layout)
+            Plotly.newPlot("plot6", normChartCO2, normCO2Layout)
 
 
     });
