@@ -1,45 +1,98 @@
-var data = 'https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/separated_tests.json'
+var data = 'https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/Separated_Tests.json'
 console.log(data)
+
+console.log([...Array(data.length).keys()])
 
 function buildCharts(country) {
     // Use d3.json to load the raw .json file from github link
-    d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/separated_tests.json").then((data) => {
+    d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/Separated_Tests.json").then((data) => {
       console.log(data);
       console.log(data[0])
 
-      var testingScore1_list = []
-      var testingScore2_list = []
-      var trainingScore1_list = []
-      var trainingScore2_list = []
+      var testingScore1_List = []
+      var testingScore2_List = []
+      var trainingScore1_List = []
+      var trainingScore2_List = []
       var x_labels = []
 
-      for (let i=1; i < data.length; i++) {
+      for (let i=0; i < data.length; i++) {
+        
+        if (data[i].Country == 1) {
+            var countryLabel = '+'
+        }
+        else {
+            countryLabel = '-'
+        }
+        if (data[i].Year == 1) {
+            var yearLabel = '+'
+        }
+        else {
+            yearLabel = '-'
+        }
+        if (data[i].C02_Normalized == 1) {
+            var co2Label = '+'
+        }
+        else {
+            co2Label = '-'
+        }
+        if (data[i].Cigarette_Sales == 1) {
+            var cigLabel = '+'
+        }
+        else {
+            cigLabel = '-'
+        }
+        if (data[i].GDP_normalized == 1) {
+            var gdpLabel = '+'
+        }
+        else {
+            gdpLabel = '-'
+        }
 
-        var testingScore1 = data[i].TestingScore1
+
+
+        x_labels.push(`${countryLabel}<br>${yearLabel}<br>${co2Label}<br>${cigLabel}<br>${gdpLabel}`)
+
+
+      }
+
+      for (let i=0; i < data.length; i++) {
+
+        var testingScore1 = data[i].Testing1
         console.log(testingScore1)
-        var testingScore2 = data[i].TestingScore2
+        testingScore1_List.push(testingScore1)
+
+
+        var testingScore2 = data[i].Testing2
         console.log(testingScore2)
-        var trainingScore1 = data[i].TrainingScore1
+        testingScore2_List.push(testingScore1)
+
+
+        var trainingScore1 = data[i].Training1
         console.log(trainingScore1)
-        var trainingScore2 = data[i].TrainingScore2
+        trainingScore1_List.push(trainingScore1)
+
+
+        var trainingScore2 = data[i].Training2
         console.log(trainingScore2)
+        trainingScore2_List.push(trainingScore2)
+
 
         var testingScore1_trace = {
             x: x_labels,
-            y: testingScore1,
+            y: testingScore1_List,
             type: 'bar',
             name: 'Testing Score 1'
           }
           ;
-          testingScore2_list.push(testingScore2_trace)
+        
           var testingScore2_trace = {
-            x: x_values,
-            y: testingScore2,
+            x: x_labels,
+            y: testingScore2_List,
             type: 'bar',
             name: 'Testing Score 2'
           }
           ;
-          testingScore1_list.push(testingScore2_trace)
+       
 
         var testingScoreLayout = {
             title: {
@@ -64,6 +117,53 @@ function buildCharts(country) {
               color:
               'white',
               title: {text: "R-Squared Value"
+              },
+              labelalias: {0: x_labels[0]}
+            }
+          };
+
+
+          var trainingScore1_trace = {
+            x: x_labels,
+            y: trainingScore1_List,
+            type: 'bar',
+            name: 'Training Score 1'
+          }
+          ;
+        
+          var trainingScore2_trace = {
+            x: x_labels,
+            y: trainingScore2_List,
+            type: 'bar',
+            name: 'Training Score 2'
+          }
+          ;
+       
+
+        var trainingScoreLayout = {
+            title: {
+              text: "Random Forest Regression Training Scores",
+              font: {
+                color:'white'
+              }
+            },
+            legend: {
+              font: {
+                color: 'white'
+              }
+            },
+            paper_bgcolor:'rgba(0,0,0,0)',
+            plot_bgcolor:'rgba(0,0,0,0)',
+            xaxis: {
+              color:'white',
+              title: {text: "Included Features"
+              },
+              title_standoff: 10
+            },
+            yaxis: {
+              color:
+              'white',
+              title: {text: "R-Squared Value"
               }
             }
           };
@@ -71,6 +171,9 @@ function buildCharts(country) {
 
 
       }
+
+    Plotly.newPlot("plot2", [testingScore1_trace, testingScore2_trace], testingScoreLayout)
+    Plotly.newPlot("plot1", [trainingScore1_trace, trainingScore2_trace], trainingScoreLayout)
 
 
 
