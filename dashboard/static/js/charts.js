@@ -4,7 +4,7 @@ function init() {
   // var selector2 = d3.select("#selDataset2");
 
   // Use  country name list to populate dropdown menu
-  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/merged_json_data3.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/cleaned_json_data.json").then((data) => {
     console.log(data)
 
     var countryNames = data.country;
@@ -31,13 +31,13 @@ init();
 function optionChanged(newCountry) {
   // Fetch new data each time a new country is selected
   buildCharts(newCountry);
-  buildAllCharts()
+
   
 }
 function optionChanged2(newCountry) {
   // Fetch new data each time a new country is selected
   buildCharts(newCountry);
-  buildAllCharts()
+  
   
 }
 
@@ -51,6 +51,7 @@ d3.select("#clearButton").on("click", function() {
   chartCO2 = []
   chartCancer = []
   chartCigs = []
+  normChartCO2 = []
   buildCharts('')
   console.log('click')
 });
@@ -80,7 +81,7 @@ function buildCharts(country) {
     // Create variables that hold the values to be plotted
     var co2 = result.co2
     console.log(co2)
-    var co2norm = ((result.co2) / (result.land_area))
+    var co2norm = result.co2_norm
     console.log(co2norm)
     var cigarettes = result.cigarette_sales
     console.log(cigarettes)
@@ -103,7 +104,7 @@ function buildCharts(country) {
 
     var co2Layout = {
       title: {
-        text: "CO2 Emissions",
+        text: "CO<sub>2</sub> Emissions",
         font: {
           color:'white'
         }
@@ -223,7 +224,7 @@ function buildCharts(country) {
       };
   
   
-      Plotly.newPlot("plot6", chartCancer, cancerLayout)
+      Plotly.newPlot("plot8", chartCancer, cancerLayout)
 
 
 
@@ -245,7 +246,7 @@ function buildCharts(country) {
         
             var normCO2Layout = {
               title: {
-                text: "Normalized CO2 Emissions",
+                text: "Normalized CO<sub>2</sub> Emissions",
                 font: {
                   color:'white'
                 }
@@ -265,13 +266,13 @@ function buildCharts(country) {
               yaxis: {
                 color:
                 'white',
-                title: {text: "CO2 Emissions <br> (kiloton/km^2)"
+                title: {text: "CO<sub>2</sub> Emissions <br> (kiloton/km^2)"
                 }
               }
             };
         
         
-            Plotly.newPlot("plot8", normChartCO2, normCO2Layout)
+            Plotly.newPlot("plot6", normChartCO2, normCO2Layout)
 
 
     });
