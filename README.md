@@ -1,7 +1,7 @@
-# Lung Cancer, C02 Emissions, and Country #
+# Lung Cancer #
 
 ## Overview of Analysis ##
-This analysis is based on 4 datasets obtained from kaggle. The [Lung Cancer deaths CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=lung-cancer-deaths-per-100000-by-sex-1950-2002.csv) contained 4,572 rows of information on country, year, death rates per 100,000 for females, and death rates per 100,000 for males. The [cigarette sales CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=sales-of-cigarettes-per-adult-per-day.csv) contained 2,767 rows of data including country, country code, year, and sales of ciegarettes per day per adult average for the year. The [CO<sub>2</sub> emissions CSV](https://www.kaggle.com/datasets/ulrikthygepedersen/co2-emissions-by-country) contains 13,953 rows on country code, country name, year, and CO<sub>2</sub> value. We have pulled in other supporting datasets such as country coordinates, GDP, population, and smoking rates but the analysis is still based off these 4 datasets. 
+This analysis is based on 4 datasets obtained from kaggle. The [Lung Cancer deaths CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=lung-cancer-deaths-per-100000-by-sex-1950-2002.csv) contained 4,572 rows of information on country, year, death rates per 100,000 for females, and death rates per 100,000 for males. The [cigarette sales CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=sales-of-cigarettes-per-adult-per-day.csv) contained 2,767 rows of data including country, country code, year, and sales of cigarettes per day per adult average for the year. The [CO<sub>2</sub> emissions CSV](https://www.kaggle.com/datasets/ulrikthygepedersen/co2-emissions-by-country) contains 13,953 rows on country code, country name, year, and CO<sub>2</sub> value. We have pulled in other supporting datasets such as country coordinates, GDP, population, and smoking rates but the analysis is still based off these 4 datasets. 
 <img width="420" alt="ERD" src="https://user-images.githubusercontent.com/116980760/228714731-8928cd95-c304-4920-9285-df3f3ea223ba.PNG">
 
 
@@ -33,13 +33,12 @@ We created a webpage to portray our findings through visualizations and using th
 ![charts_segment2](Images/charts_segment2.png).
 
 ## Machine Learning
-We started with a unsupervised model using the K-means method and clustering. According to our elbow curve, we decided there should be 4 clusters as shown below. Our initial attempt at clusting led to a very obvious cluster containing all of the United States data. Upon further inspection, it was obvious that our CO<sub>2</sub> data needed to be normalized, for which we used [country land area](https://data.worldbank.org/indicator/AG.LND.TOTL.K2?end=2020&start=2020&view=map). 
+We started with an unsupervised model using the K-means method and clustering. According to our elbow curve, we decided there should be 4 clusters as shown below. Our initial attempt at clustering led to a very obvious cluster containing all of the United States data. Upon further inspection, it was obvious that our CO<sub>2</sub> data needed to be normalized, for which we used [country land area](https://data.worldbank.org/indicator/AG.LND.TOTL.K2?end=2020&start=2020&view=map). 
 
 ![elbow_segment2](Images/elbow_segment2.png).
 ![3d_scatter_segment2](Images/3d_scatter_segment2.png).
 
-Upon closer evaluation, we decided that we want to look into incorporating a supervised model, using lung cancer death rates as the outcome. We started out using a linear regressin model, but quickly progressed to a Random Forrest Regression Model. Here we found SUMMARY TEXT FOR RANDOM FOREST REGRESSOR.
-
+Upon closer evaluation, we decided that we want to look into incorporating a supervised model, using lung cancer death rates as the outcome. We started out using a linear regression model, but quickly progressed to a Random Forest Regression Model. Here, we found that the country appeared to be the most important feature in the analysis. It was the only variable that provided an accuracy score of above 90% for the training data when it was the solitary independent variable. With each variation of feature selection, the only time the training score was above 90% is when the country was included. It seems that lung cancer and CO2 levels are not as closely related to lung cancer deaths as country. In future research, it would be of value to include cancer diagnoses to ascertain the real relationship between the independent variables and  cancer rates versus cancer deaths. 
 
 ## Challenges
 * Finding a Machine Learning model that is right for our data that we can incorporate into our webpage.
@@ -49,4 +48,4 @@ Upon closer evaluation, we decided that we want to look into incorporating a sup
 ## Results
 This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. It is a little harder to tell if CO<sub>2</sub> emissions have a direct correlation to lung cancer rates, but that is one of the things we wanted to find out so it was worth looking into. 
 ## Summary
-All in all, some things that have popped out to us so far is that CO2 emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancment in medicine?
+All in all, some things that have popped out to us so far is that CO2 emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancement in medicine?
