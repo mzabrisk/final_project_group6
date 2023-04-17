@@ -55,13 +55,16 @@ function updateChart() {
 
     var testingScore1_List = []
     var testingScore2_List = []
+    var testingScoreAvg_List = []
     var trainingScore1_List = []
     var trainingScore2_List = []
+    var trainingScoreAvg_List = []
     var scoreDiff1_List = []
     var scoreDiff2_List = []
+    var scoreDiffAvg_List = []
     var x_labels = []
 
-    for (let i=0; i < data.length; i++) {
+    for (let i=0; i < data.length-1; i++) {
       
       if (data[i].Country == 1) {
           var countryLabel = "+"
@@ -97,6 +100,7 @@ function updateChart() {
       x_labels.push(`${countryLabel}<br>${yearLabel}<br>${co2Label}<br>${cigLabel}<br>${gdpLabel}`)
 
     }
+    // x_labels.push("Country<br>Year<br>CO2<br>Cigs<br>GDP")
 
     for (let i=0; i < data.length; i++) {
 
@@ -108,6 +112,9 @@ function updateChart() {
       console.log(testingScore2)
       testingScore2_List.push(testingScore2)
 
+      var testingScore = (testingScore1 + testingScore2) / 2
+      testingScoreAvg_List.push(testingScore)
+
       var trainingScore1 = data[i].Training1
       console.log(trainingScore1)
       trainingScore1_List.push(trainingScore1)
@@ -115,6 +122,9 @@ function updateChart() {
       var trainingScore2 = data[i].Training2
       console.log(trainingScore2)
       trainingScore2_List.push(trainingScore2)
+
+      var trainingScore = (trainingScore1 + trainingScore2) / 2
+      trainingScoreAvg_List.push(trainingScore)
 
       var scoreDiff1 = data[i].Training1 - data[i].Testing1
       console.log(scoreDiff1)
@@ -124,22 +134,25 @@ function updateChart() {
       console.log(scoreDiff2)
       scoreDiff2_List.push(scoreDiff2)
 
+      var scoreDiff = (scoreDiff1 + scoreDiff2) / 2
+      scoreDiffAvg_List.push(scoreDiff)
 
-      var testingScore1_trace = {
+// Testing Score Graph
+      var testingScore_trace = {
           x: x_labels,
-          y: testingScore1_List,
+          y: testingScoreAvg_List,
           type: 'bar',
           name: 'Testing Score 1'
         }
         ;
       
-        var testingScore2_trace = {
-          x: x_labels,
-          y: testingScore2_List,
-          type: 'bar',
-          name: 'Testing Score 2'
-        }
-        ;
+        // var testingScore2_trace = {
+        //   x: x_labels,
+        //   y: testingScore2_List,
+        //   type: 'bar',
+        //   name: 'Testing Score 2'
+        // }
+        // ;
      
 
       var testingScoreLayout = {
@@ -158,34 +171,35 @@ function updateChart() {
           plot_bgcolor:'rgba(0,0,0,0)',
           xaxis: {
             color:'white',
+            tickangle: 0
             // title: {text: "Included Features"
             // }
           },
           yaxis: {
             color:
             'white',
-            title: {text: "R-Squared Value"
+            title: {text: "R-Squared Value<br>(mean n=2)"
             },
             labelalias: {0: x_labels[0]}
           }
         };
 
-
-        var trainingScore1_trace = {
+//  Training Score Graph
+        var trainingScore_trace = {
           x: x_labels,
-          y: trainingScore1_List,
+          y: trainingScoreAvg_List,
           type: 'bar',
           name: 'Training Score 1'
         }
         ;
       
-        var trainingScore2_trace = {
-          x: x_labels,
-          y: trainingScore2_List,
-          type: 'bar',
-          name: 'Training Score 2'
-        }
-        ;
+        // var trainingScore2_trace = {
+        //   x: x_labels,
+        //   y: trainingScore2_List,
+        //   type: 'bar',
+        //   name: 'Training Score 2'
+        // }
+        // ;
      
 
       var trainingScoreLayout = {
@@ -211,27 +225,27 @@ function updateChart() {
           yaxis: {
             color:
             'white',
-            title: {text: "R-Squared Value"
+            title: {text: "R-Squared Value<br>(mean n=2)"
             }
           }
         };
 
-
-        var scoreDiff1_trace = {
+//  Score Diff Graph
+        var scoreDiff_trace = {
           x: x_labels,
-          y: scoreDiff1_List,
+          y: scoreDiffAvg_List,
           type: 'bar',
           name: 'Training Score 1'
         }
         ;
       
-        var scoreDiff2_trace = {
-          x: x_labels,
-          y: scoreDiff2_List,
-          type: 'bar',
-          name: 'Training Score 2'
-        }
-        ;
+        // var scoreDiff2_trace = {
+        //   x: x_labels,
+        //   y: scoreDiff2_List,
+        //   type: 'bar',
+        //   name: 'Training Score 2'
+        // }
+        // ;
      
 
       var scoreDiffLayout = {
@@ -257,15 +271,15 @@ function updateChart() {
           yaxis: {
             color:
             'white',
-            title: {text: "Difference in Training/Testing <br>R-Squared Values"
+            title: {text: "Difference in Training/Testing <br>R-Squared Values (mean n=2)"
             }
           }
         };
     }
 
-  Plotly.newPlot("plot2", [testingScore1_trace, testingScore2_trace], testingScoreLayout)
-  Plotly.newPlot("plot1", [trainingScore1_trace, trainingScore2_trace], trainingScoreLayout)
-  Plotly.newPlot("plot3", [scoreDiff1_trace, scoreDiff2_trace], scoreDiffLayout)
+  Plotly.newPlot("plot2", [testingScore_trace], testingScoreLayout)
+  Plotly.newPlot("plot1", [trainingScore_trace], trainingScoreLayout)
+  Plotly.newPlot("plot3", [scoreDiff_trace], scoreDiffLayout)
 
 })}
 
