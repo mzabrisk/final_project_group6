@@ -7,7 +7,10 @@ function buildCharts(country) {
     // Use d3.json to load the raw .json file from github link
     d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/Separated_Tests.json").then((data) => {
       console.log(data);
-      console.log(data[0])
+
+    // if (#feature1)
+    var filteredData = data.filter(dataObj => dataObj.Country == 1)
+    console.log(filteredData)
 
       var testingScore1_List = []
       var testingScore2_List = []
@@ -216,7 +219,7 @@ function buildCharts(country) {
             yaxis: {
               color:
               'white',
-              title: {text: "R-Squared Value"
+              title: {text: "Difference in Training/Testing <br>R-Squared Values"
               }
             }
           };
