@@ -64,7 +64,7 @@ function updateChart() {
     var scoreDiffAvg_List = []
     var x_labels = []
 
-    for (let i=0; i < data.length-1; i++) {
+    for (let i=0; i < data.length; i++) {
       
       if (data[i].Country == 1) {
           var countryLabel = "+"
