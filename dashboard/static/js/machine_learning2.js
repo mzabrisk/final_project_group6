@@ -1,4 +1,4 @@
-var data = 'https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/Separated_Tests.json'
+var data = 'https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/Separated_Tests.json'
 console.log(data)
 
 console.log([...Array(data.length).keys()])
@@ -14,7 +14,7 @@ updateChart();
 
 function updateChart() {
 
-    d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/Separated_Tests.json").then((data) => {
+    d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/Separated_Tests.json").then((data) => {
 
     if(d3.select("#feature1").property("checked")) {
         data = data.filter(dataObj => dataObj.Country == 1)
