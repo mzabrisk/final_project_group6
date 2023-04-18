@@ -112,9 +112,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
 
 
 
-
-
-
   // Create CO2 style function
   function styleInfoCO2(feature) {
     return {
@@ -152,7 +149,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
     }
   }
 
-
   // Creating CO2 EMISSIONS Layer 
   L.geoJson(data, {
     style: styleInfoCO2,
@@ -161,9 +157,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
     }
   }).addTo(co2Emissions);
   co2Emissions.addTo(map);
-
-
-
 
 
   // Create CO2Norm style function
@@ -205,9 +198,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
   }
 
 
-
-
-
   // Creating CO2 EMISSIONS Layer 
   L.geoJson(data, {
     style: styleInfoCO2Norm,
@@ -215,11 +205,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
       layer.bindPopup("Country: " + feature.properties.name  + "<br>CO2 Emissions (kiloton/km^2): " + numberWithCommas((feature.properties.co2_emissions / feature.properties.land_area).toFixed(2)))
     }
   }).addTo(co2EmissionsNorm);
-
-
-
-
-
 
 
   // Create TOTAL DEATHS style function
@@ -260,8 +245,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
   }
 
 
-
-
   // Creating DEATHS Layer 
   L.geoJson(data, {
     style: styleInfoDeaths,
@@ -269,10 +252,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
       layer.bindPopup("Country: " + feature.properties.name  + "<br>Lung Cancer Death Rate (/100k people): " + ((feature.properties.female_death_rate + feature.properties.male_death_rate)/2).toFixed(2))
     }
   }).addTo(lungCancerDeathRate);
-
-
-
-
 
 
     // Create MALE DEATHS style function
@@ -312,7 +291,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
       };
     }
 
-  
     // Creating MALE DEATHS Layer 
     L.geoJson(data, {
       style: styleInfoDeathsMale,
@@ -320,9 +298,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
         layer.bindPopup("Country: " + feature.properties.name  + "<br>Lung Cancer Death Rate (/100k men): " + (feature.properties.male_death_rate).toFixed(2))
       }
     }).addTo(lungCancerDeathRateMale);
-
-
-
 
 
 
@@ -373,9 +348,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
 
 
 
-
-
-
   // Create CIGARETTE SALES style function
   function styleInfoCigs(feature) {
     return {
@@ -423,10 +395,6 @@ d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/da
   }).addTo(cigaretteSales);
 
 
-
-
-
-// LEGEND STILL NEEDS WORK
   // Here we create a legend control object.
 let legend = L.control({
   position: "bottomright"
@@ -460,45 +428,4 @@ legend.onAdd = function() {
   // Finally, we our legend to the map.
   legend.addTo(map);
 });
-// // Creating legend for co2Emissions
-//   let legend2 = L.control({
-//     position: "bottomleft"
-//   });
-  
-//   legend2.onAdd = function() {
-//     let div = L.DomUtil.create("div", "info legend");
-  
-//     const magnitudes = [ ,4.5 , 5, 6];
-//     const colors = [ ,
-//       "#ea822c",
-//       "#ea2c2c",
-//       "#000000"
-//     ];
 
-//     for (var i = 0; i < magnitudes.length; i++) {
-//       console.log(colors[i]);
-//       div.innerHTML +=
-//         (magnitudes[i] ? "<i style='background: " + colors[i] + "'></i> " +
-//         (magnitudes[i - 1] ? magnitudes[i] + (magnitudes[i+1] ? "&ndash;" : ""): "<") + (magnitudes[i + 1] ? magnitudes[i + 1] + "<br>" : "+") : '<h4>Major Quakes</h4>');
-//       }
-//       return div;
-//     };
-
-  
-//     // Finally, we our legend to the map.
-//     legend2.addTo(map);
-
-
-// //   // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
-//   // d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/project_map.geo.json").then(function(data) {
-//   //   console.log(data)
-
-//   //   L.geoJson(data, {
-//   //     style: {
-//   //       'color': 'blue',
-//   //       'weight': '1'
-//   //     }}).addTo(countryBoundaries);
-    
-//   // });
-//   // countryBoundaries.addTo(map);
-// });
