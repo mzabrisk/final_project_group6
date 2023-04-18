@@ -67,34 +67,34 @@ function updateChart() {
     for (let i=0; i < data.length; i++) {
       
       if (data[i].Country == 1) {
-          var countryLabel = "+"
+          var countryLabel = "<span style='color:white'>+</span>"
       }
       else {
-          countryLabel = "-"
+          countryLabel = "<span style='color:white'>-</span>"
       }
       if (data[i].Year == 1) {
-          var yearLabel = "Y"
+          var yearLabel = "<span style='color:red'>+</span>"
       }
       else {
-          yearLabel = "N"
+          yearLabel = "<span style='color:red'>-</span>"
       }
       if (data[i].C02_Normalized == 1) {
-          var co2Label = "y"
+          var co2Label = "<span style='color:#CBC3E3'>+</span>"
       }
       else {
-          co2Label = "n"
+          co2Label = "<span style='color:#CBC3E3'>-</span>"
       }
       if (data[i].Cigarette_Sales == 1) {
-          var cigLabel = "1"
+          var cigLabel = "<span style='color:lightgreen'>+</span>"
       }
       else {
-          cigLabel = "0"
+          cigLabel = "<span style='color:lightgreen'>-</span>"
       }
       if (data[i].GDP_normalized == 1) {
-          var gdpLabel = "x"
+          var gdpLabel = "<span style='color:yellow'>+</span>"
       }
       else {
-          gdpLabel = "o"
+          gdpLabel = "<span style='color:yellow'>-</span>"
       }
 
       x_labels.push(`${countryLabel}<br>${yearLabel}<br>${co2Label}<br>${cigLabel}<br>${gdpLabel}`)
