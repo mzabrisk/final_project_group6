@@ -18,25 +18,25 @@ In order to make working with the data in Javascript easier, the pandas DataFram
 In order to incorporate our data into the world map, a GEOJSON file with country borders was obtained [here](https://geojson-maps.ash.ms/). Next, the complete list of countries in the GEOJSON file were obtained, and used to modify our Pandas DataFrame to be of matching length and include all countries. Lastly, the features of interest were selected from the DataFrame and GEOJSON file, and both files were looped through simultaneously with for loops to build a new GEOJSON file with all desired content
 
 ## Dashboard
-We created a webpage to portray our findings through visualizations using the mapbox API and the Plotly library. The webpage has several different tabs, including:
+We created a [webpage](https://mzabrisk.github.io/final_project_group6/dashboard/index.html) to portray our findings through visualizations using the mapbox API and the Plotly library. The webpage has several different tabs, including:
 
 - A home page, which provides the background for our project
 - A world map utilizing the mapbox API showing various data for each country, including:
 
 
-        - total CO<sub>2</sub> emissions
+        <ul>total CO<sub>2</sub> emissions</ul>
 
 
-        - normalized CO<sub>2</sub> emissions
+        <ul>normalized CO<sub>2</sub> emissions</ul>
 
 
-        - lung cancer death rates (total, male, and female)
+        <ul>lung cancer death rates (total, male, and female)</ul>
 
 
-        - cigarette sales
+        <ul>cigarette sales</ul>
 
 
-        - population
+        <ul>population</ul>
 
 
 
