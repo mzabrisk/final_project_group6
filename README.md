@@ -20,30 +20,18 @@ In order to incorporate our data into the world map, a GEOJSON file with country
 ## Dashboard
 We created a [webpage](https://mzabrisk.github.io/final_project_group6/dashboard/index.html) to portray our findings through visualizations using the mapbox API and the Plotly library. The webpage has several different tabs, including:
 
-- A home page, which provides the background for our project
-- A world map utilizing the mapbox API showing various data for each country, including:
+* A home page, which provides the background for our project
+* A world map utilizing the mapbox API showing various data for each country, including:
+        - total CO<sub>2</sub> emissions
+        - normalized CO<sub>2</sub> emissions
+        - lung cancer death rates (total, male, and female)
+        - cigarette sales
+        - population
 
-
-        1. total CO<sub>2</sub> emissions
-
-
-        2. normalized CO<sub>2</sub> emissions
-
-
-        3. lung cancer death rates (total, male, and female)
-
-
-        4. cigarette sales
-
-        
-        5. population
-
-
-
-- A tab containing customizable charts 
-- A machine learning tab describing the creation and results of our model
-- A summary tab summarizing our overall project outcome
-- A resources page with links to all of the data and resources used
+* A tab containing customizable charts 
+* A machine learning tab describing the creation and results of our model
+* A summary tab summarizing our overall project outcome
+* A resources page with links to all of the data and resources used
 
 
 ![homepage_segment2](Images/homepage_segment2.png).
