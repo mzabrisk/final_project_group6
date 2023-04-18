@@ -44,16 +44,20 @@
             </div>
             <div class="col-md-8 article-p">
               <p>
-                Although it is well known that smoking cigarettes does in fact cause lung cancer, we wanted to find out if CO2 emissions is also a player in this
-                worldwide disease. Our group found 3 data sets obtained from kaggle to get us started in finding this question out. We used a Lung Cancer Deaths 
-                CSV, a cigarette sales CSV, and a CO2 emissions CSV all shown in the reference tab above. As we began cleaning, sorting, and studying our data, 
-                we quickly found out that we needed to bring in some other datasets to tune in our model for predicting lung cancer death rates. Some questions we 
-                found ourselves asking through the analysis were; are there more lung cancer cases in men or women? Does country GDP play a factor? What countries have
-                the highest emissions? How has the data changed throughout the last 20 or so years? Overall, it was clear that cigarette sales do indeed play a critical
-                role in lung cancer cases. The data shows that the more cigarettes sold, the more cases recorded. Over the past 20 years, cigarette sales have gone down 
-                resulting in lung cancer rates to go down, but the emissions in most countries are continuing to rise! It's hard to say for certain if CO2 emissions is 
-                directly related to lung cancer, but that was the point of this analysis. To find out if we could create a model for predicting lung cancer deaths in people
-                exposed to not only cigarettes, but CO2 emissions as well.
+                  Although it is well known that smoking cigarettes does in fact cause lung cancer, we wanted to find out if CO2 emissions is also a player in this
+                worldwide disease. The reason why we went with CO2 emissions is because it is a good indicator of all green house gasses, in hopes we could find a correlation
+                to lung cancer rates. Our group found 3 data sets obtained from kaggle to get us started in finding this question out. We used a Lung Cancer Deaths 
+                CSV, a cigarette sales CSV, and a CO2 emissions CSV all shown in the reference tab above. To perform the ETL process, we used the Pandas Library in Python
+                and also PostgreSQL to clean, merge, and hold our data. As we began cleaning, sorting, and studying the information, we quickly found out that we needed to bring in 
+                some other datasets to tune in our model for predicting lung cancer death rates. Some questions we found ourselves asking through the analysis were; 
+                are there more lung cancer cases in men or women? Does country GDP play a factor due to potential medical advancements? What countries have the highest emissions? 
+                How has the data changed throughout the last 20 or so years? Ultimately, we stuck to our main question of how emissions and cigarette sales are linked to lung cancer?
+                  In the beginning of the project we were fairly certain that we would need to use an unsupervised Machine learning Model, but as we normalized and brought in other 
+                data we found that the Random Forest Machine learning Model was the best Model for our project. Overall, it was surprising to see that cigarette sales wasn't the indicator
+                in predicting lung cancer deaths, but the country was. Again, we found ourselves wondering if medical advancements between 1st and 3rd world countries play a crucial role
+                in both lung cancer rates and deaths. In most cases, the data does in fact show that the more cigarettes sold, the more cases recorded, and the less cigarette sales result
+                in less cases recorded. It's hard to say for certain if CO2 emissions is directly related to lung cancer. Take the USA for example, over the last couple decades, CO2 
+                emissions have been on the rise, but lung cancer deaths have gone down. Is this simply once again, the fact that medicine has advanced tremendously in the past 20 years? 
               </p>
             </div>
           </div>
