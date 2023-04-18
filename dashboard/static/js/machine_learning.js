@@ -1,11 +1,11 @@
-var data = 'https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/Separated_Tests.json'
+var data = 'https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/Separated_Tests.json'
 console.log(data)
 
 console.log([...Array(data.length).keys()])
 
 function buildCharts(country) {
     // Use d3.json to load the raw .json file from github link
-    d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/Separated_Tests.json").then((data) => {
+    d3.json("https://raw.githubusercontent.com/mzabrisk/final_project_group6/main/dashboard/static/resources/Separated_Tests.json").then((data) => {
       console.log(data);
       console.log(data[0])
 
