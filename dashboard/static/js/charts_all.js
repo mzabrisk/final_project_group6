@@ -167,7 +167,7 @@ function init() {
         };
     
     
-        Plotly.newPlot("plot7", chartCigs, cigLayout)
+        // Plotly.newPlot("plot7", chartCigs, cigLayout)
   
         // Creat chart for lung cancer deaths 
         var cancerChart = {
@@ -223,7 +223,7 @@ function init() {
         };
     
     
-        Plotly.newPlot("plot6", chartCancer, cancerLayout)
+        // Plotly.newPlot("plot6", chartCancer, cancerLayout)
   
   
       });
@@ -406,7 +406,7 @@ function init() {
       }
         // Plotly.newPlot("plot1", maleCancers, maleCancerLayout)
         // Plotly.newPlot("plot2", femaleCancers, femaleCancerLayout)
-        // Plotly.newPlot("plot3", co2Emissions, co2Layout)
+        Plotly.newPlot("plot3", co2Emissions, co2Layout)
         // Plotly.newPlot("plot4", cigaretteSales, cigaretteLayout)
     
   
