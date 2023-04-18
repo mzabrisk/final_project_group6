@@ -22,11 +22,11 @@ We created a [webpage](https://mzabrisk.github.io/final_project_group6/dashboard
 
 * A home page, which provides the background for our project
 * A world map utilizing the mapbox API showing various data for each country, including:
-        - total CO<sub>2</sub> emissions
-        - normalized CO<sub>2</sub> emissions
-        - lung cancer death rates (total, male, and female)
-        - cigarette sales
-        - population
+        * total CO<sub>2</sub> emissions
+        * normalized CO<sub>2</sub> emissions
+        * lung cancer death rates (total, male, and female)
+        * cigarette sales
+        * population
 
 * A tab containing customizable charts 
 * A machine learning tab describing the creation and results of our model
