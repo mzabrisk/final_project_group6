@@ -9,23 +9,41 @@ This analysis is based on 4 datasets obtained from kaggle. The [Lung Cancer deat
 The purpose of the analysis is to determine if cigarette sales and CO<sub>2</sub> emissions are linked to lung cancer.  
 
 ## ETL Process ##
-The data was combined into a database. We used both the Pandas Library in Python and PostgreSQL to clean, sort, and merge our data to a state where we could use it for our visualizations and Machine Learning Models.
+The data was combined into a database. We used both the Pandas Library in Python and PostgreSQL to clean, sort, and merge our data to a state where we could use it for our visualizations and Machine Learning Models. 
+
+### Transitioning the Data to Javascript
+In order to make working with the data in Javascript easier, the pandas DataFrames were converted to JSON files using the Python json library and the json.dumps method. 
+
+### Creating a GEOJSON File for Map
+In order to incorporate our data into the world map, a GEOJSON file with country borders was obtained [here](https://geojson-maps.ash.ms/). Next, the complete list of countries in the GEOJSON file were obtained, and used to modify our Pandas DataFrame to be of matching length and include all countries. Lastly, the features of interest were selected from the DataFrame and GEOJSON file, and both files were looped through simultaneously with for loops to build a new GEOJSON file with all desired content
 
 ## Dashboard
-We created a webpage to portray our findings through visualizations and using the mapbox API. The webpage has several different tabs, including:
+We created a webpage to portray our findings through visualizations using the mapbox API and the Plotly library. The webpage has several different tabs, including:
 
 - A home page, which provides the background for our project
 - A world map utilizing the mapbox API showing various data for each country, including:
+
+
         - total CO<sub>2</sub> emissions
+
+
         - normalized CO<sub>2</sub> emissions
+
+
         - lung cancer death rates (total, male, and female)
+
+
         - cigarette sales
+
+
         - population
+
+
 
 - A tab containing customizable charts 
 - A machine learning tab describing the creation and results of our model
 - A summary tab summarizing our overall project outcome
-- A references page with links to all of the data and resources used
+- A resources page with links to all of the data and resources used
 
 
 ![homepage_segment2](Images/homepage_segment2.png).
@@ -42,10 +60,10 @@ Upon closer evaluation, we decided that we want to look into incorporating a sup
 
 ## Challenges
 * Finding a Machine Learning model that is right for our data that we can incorporate into our webpage.
-* Getting the right data that helps our overall goal of determining if cigarette sales and CO2 emissions are linked to lung cancer. 
+* Getting the right data that helps our overall goal of determining if cigarette sales and CO<sub>2</sub> emissions are linked to lung cancer. 
 ## Successes
 * Working as a team and making great progress even though we are all on different schedules. 
 ## Results
 This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. It is a little harder to tell if CO<sub>2</sub> emissions have a direct correlation to lung cancer rates, but that is one of the things we wanted to find out so it was worth looking into. 
 ## Summary
-All in all, some things that have popped out to us so far is that CO2 emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancement in medicine?
+All in all, some things that have popped out to us so far is that CO<sub>2</sub> emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancement in medicine?
