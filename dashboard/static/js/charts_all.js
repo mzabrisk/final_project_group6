@@ -260,7 +260,7 @@ function init() {
       console.log(years)
     
         
-        console.log(cancers)
+        // console.log(cancers)
         // Creat chart for male lung cancer deaths 
         var maleCancerTrace = {
           x: years,
