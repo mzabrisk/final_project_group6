@@ -22,20 +22,10 @@ We created a [webpage](https://mzabrisk.github.io/final_project_group6/dashboard
 
 - A home page, which provides the background for our project
 - A world map utilizing the mapbox API showing various data for each country, including:
-
-
         <ul>total CO<sub>2</sub> emissions</ul>
-
-
         <ul>normalized CO<sub>2</sub> emissions</ul>
-
-
         <ul>lung cancer death rates (total, male, and female)</ul>
-
-
         <ul>cigarette sales</ul>
-
-
         <ul>population</ul>
 
 
