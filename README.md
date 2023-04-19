@@ -1,7 +1,8 @@
-# Lung Cancer #
+# Lung Cancer Around the World
 
 ## Overview of Analysis ##
-This analysis is based on 4 datasets obtained from kaggle. The [Lung Cancer deaths CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=lung-cancer-deaths-per-100000-by-sex-1950-2002.csv) contained 4,572 rows of information on country, year, death rates per 100,000 for females, and death rates per 100,000 for males. The [cigarette sales CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=sales-of-cigarettes-per-adult-per-day.csv) contained 2,767 rows of data including country, country code, year, and sales of cigarettes per day per adult average for the year. The [CO<sub>2</sub> emissions CSV](https://www.kaggle.com/datasets/ulrikthygepedersen/co2-emissions-by-country) contains 13,953 rows on country code, country name, year, and CO<sub>2</sub> value. We have pulled in other supporting datasets such as country coordinates, GDP, population, and smoking rates but the analysis is still based off these 4 datasets. 
+Although it is well known that smoking cigarettes does in fact cause lung cancer, we wanted to find out if CO<sub>2</sub> emissions is also a player in this
+worldwide disease. So our question we wanted to base our analysis from, is how are cigarette sales and emission linked to lung cancer. This analysis is based on 3 datasets obtained from kaggle. The [Lung Cancer deaths CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=lung-cancer-deaths-per-100000-by-sex-1950-2002.csv) contained 4,572 rows of information on country, year, death rates per 100,000 for females, and death rates per 100,000 for males. The [cigarette sales CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=sales-of-cigarettes-per-adult-per-day.csv) contained 2,767 rows of data including country, country code, year, and sales of cigarettes per day per adult average for the year. The [CO<sub>2</sub> emissions CSV](https://www.kaggle.com/datasets/ulrikthygepedersen/co2-emissions-by-country) contains 13,953 rows on country code, country name, year, and CO<sub>2</sub> value. We have pulled in other supporting datasets such as country coordinates, GDP, population, and smoking rates but the analysis is still based off these 3 datasets. 
 <img width="420" alt="ERD" src="https://user-images.githubusercontent.com/116980760/228714731-8928cd95-c304-4920-9285-df3f3ea223ba.PNG">
 
 
@@ -9,7 +10,7 @@ This analysis is based on 4 datasets obtained from kaggle. The [Lung Cancer deat
 The purpose of the analysis is to determine if cigarette sales and CO<sub>2</sub> emissions are linked to lung cancer.  
 
 ## ETL Process ##
-The data was combined into a database. We used both the Pandas Library in Python and PostgreSQL to clean, sort, and merge our data to a state where we could use it for our visualizations and Machine Learning Models. 
+The data was combined into a PostgreSQL database. We used both the Pandas Library in Python and PostgreSQL to clean, sort, and merge our data to a state where we could use it for our visualizations and Machine Learning Models. Since the datasets we were using had a primary key "Country", it was fairly easy to get the data merged together. 
 
 ### Transitioning the Data to Javascript
 In order to make working with the data in Javascript easier, the pandas DataFrames were converted to JSON files using the Python json library and the json.dumps method. 
@@ -36,9 +37,13 @@ We created a [webpage](https://mzabrisk.github.io/final_project_group6/dashboard
 * A resources page with links to all of the data and resources used
 
 
-![homepage_segment2](Images/homepage_segment2.png).
-![world_map_segment2](Images/world_map_segment2.png).
-![charts_segment2](Images/charts_segment2.png).
+![homepage_segment3](Images/homepage_segment3.png)
+![world_map_segment3](Images/world_map_segment3.png)
+![charts_segment3](Images/charts_segment3.png)
+![machine_learning_segment3](Images/machine_learning_segment3.png)
+![summary_segment3](Images/summary_segment3.png)
+![resources_segment3](Images/resources_segment3.png)
+
 
 ## Machine Learning
 We started with an unsupervised model using the K-means method and clustering. According to our elbow curve, we decided there should be 4 clusters as shown below. Our initial attempt at clustering led to a very obvious cluster containing all of the United States data. Upon further inspection, it was obvious that our CO<sub>2</sub> data needed to be normalized, for which we used [country land area](https://data.worldbank.org/indicator/AG.LND.TOTL.K2?end=2020&start=2020&view=map). 
@@ -53,7 +58,9 @@ Upon closer evaluation, we decided that we want to look into incorporating a sup
 * Getting the right data that helps our overall goal of determining if cigarette sales and CO<sub>2</sub> emissions are linked to lung cancer. 
 ## Successes
 * Working as a team and making great progress even though we are all on different schedules. 
+* Completing our work on time and holding eachother accountable for getting the project completed.
+* Creating a good looking webpage that is interactive to portrey our findings.
 ## Results
-This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. It is a little harder to tell if CO<sub>2</sub> emissions have a direct correlation to lung cancer rates, but that is one of the things we wanted to find out so it was worth looking into. 
+This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. According to our Machine Learning Model, the feature that predicts lung cancer the best is based on the country. We are thinking this has to do with the fact that first world countries have access to better advancements in medicine, while third world countries don't have that privilage. It is a little harder to tell if CO<sub>2</sub> emissions have a direct correlation to lung cancer rates, but that is one of the things we wanted to find out so it was worth looking into. 
 ## Summary
-All in all, some things that have popped out to us so far is that CO<sub>2</sub> emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancement in medicine?
+All in all, some things that have popped out to us so far is that CO<sub>2</sub> emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that, the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancement in medicine?
