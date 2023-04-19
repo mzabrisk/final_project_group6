@@ -37,7 +37,7 @@ We created a [webpage](https://mzabrisk.github.io/final_project_group6/dashboard
 * A resources page with links to all of the data and resources used
 
 
-![homepage_segment3](Images/homepage_segment3.png)
+![homepage_segment4](Images/homepage_segment4.png)
 ![world_map_segment3](Images/world_map_segment3.png)
 ![charts_segment3](Images/charts_segment3.png)
 ![machine_learning_segment3](Images/machine_learning_segment3.png)
