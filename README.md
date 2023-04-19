@@ -37,9 +37,13 @@ We created a [webpage](https://mzabrisk.github.io/final_project_group6/dashboard
 * A resources page with links to all of the data and resources used
 
 
-![homepage_segment2](Images/homepage_segment2.png).
-![world_map_segment2](Images/world_map_segment2.png).
-![charts_segment2](Images/charts_segment2.png).
+![homepage_segment3](Images/homepage_segment3.png)
+![world_map_segment3](Images/world_map_segment3.png)
+![charts_segment3](Images/charts_segment3.png)
+![machine_learning_segment3](Images/machine_learning_segment3.png)
+![summary_segment3](Images/summary_segment3.png)
+![resources_segment3](Images/resources_segment3.png)
+
 
 ## Machine Learning
 We started with an unsupervised model using the K-means method and clustering. According to our elbow curve, we decided there should be 4 clusters as shown below. Our initial attempt at clustering led to a very obvious cluster containing all of the United States data. Upon further inspection, it was obvious that our CO<sub>2</sub> data needed to be normalized, for which we used [country land area](https://data.worldbank.org/indicator/AG.LND.TOTL.K2?end=2020&start=2020&view=map). 
@@ -54,7 +58,9 @@ Upon closer evaluation, we decided that we want to look into incorporating a sup
 * Getting the right data that helps our overall goal of determining if cigarette sales and CO<sub>2</sub> emissions are linked to lung cancer. 
 ## Successes
 * Working as a team and making great progress even though we are all on different schedules. 
+* Completing our work on time and holding eachother accountable for getting the project completed.
+* Creating a good looking webpage that is interactive to portrey our findings.
 ## Results
-This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. It is a little harder to tell if CO<sub>2</sub> emissions have a direct correlation to lung cancer rates, but that is one of the things we wanted to find out so it was worth looking into. 
+This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. According to our Machine Learning Model, the feature that predicts lung cancer the best is based on the country. We are thinking this has to do with the fact that first world countries have access to better advancements in medicine, while third world countries don't have that privilage. It is a little harder to tell if CO<sub>2</sub> emissions have a direct correlation to lung cancer rates, but that is one of the things we wanted to find out so it was worth looking into. 
 ## Summary
-All in all, some things that have popped out to us so far is that CO<sub>2</sub> emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancement in medicine?
+All in all, some things that have popped out to us so far is that CO<sub>2</sub> emissions are continuing to rise in most cases. Especially in more developed countries. Another thing that stood out was the fact that cigarette sales have been going down in most countries, and along with that, the lung cancer rates have been going down as well. Could this be a direct link to cigarettes, or is it simply an advancement in medicine?
