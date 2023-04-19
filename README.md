@@ -1,7 +1,8 @@
-# Lung Cancer #
+# Lung Cancer Around the World
 
 ## Overview of Analysis ##
-This analysis is based on 4 datasets obtained from kaggle. The [Lung Cancer deaths CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=lung-cancer-deaths-per-100000-by-sex-1950-2002.csv) contained 4,572 rows of information on country, year, death rates per 100,000 for females, and death rates per 100,000 for males. The [cigarette sales CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=sales-of-cigarettes-per-adult-per-day.csv) contained 2,767 rows of data including country, country code, year, and sales of cigarettes per day per adult average for the year. The [CO<sub>2</sub> emissions CSV](https://www.kaggle.com/datasets/ulrikthygepedersen/co2-emissions-by-country) contains 13,953 rows on country code, country name, year, and CO<sub>2</sub> value. We have pulled in other supporting datasets such as country coordinates, GDP, population, and smoking rates but the analysis is still based off these 4 datasets. 
+Although it is well known that smoking cigarettes does in fact cause lung cancer, we wanted to find out if CO<sub>2</sub> emissions is also a player in this
+worldwide disease. So our question we wanted to base our analysis from, is how are cigarette sales and emission linked to lung cancer. This analysis is based on 3 datasets obtained from kaggle. The [Lung Cancer deaths CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=lung-cancer-deaths-per-100000-by-sex-1950-2002.csv) contained 4,572 rows of information on country, year, death rates per 100,000 for females, and death rates per 100,000 for males. The [cigarette sales CSV](https://www.kaggle.com/datasets/programmerrdai/cancer?select=sales-of-cigarettes-per-adult-per-day.csv) contained 2,767 rows of data including country, country code, year, and sales of cigarettes per day per adult average for the year. The [CO<sub>2</sub> emissions CSV](https://www.kaggle.com/datasets/ulrikthygepedersen/co2-emissions-by-country) contains 13,953 rows on country code, country name, year, and CO<sub>2</sub> value. We have pulled in other supporting datasets such as country coordinates, GDP, population, and smoking rates but the analysis is still based off these 3 datasets. 
 <img width="420" alt="ERD" src="https://user-images.githubusercontent.com/116980760/228714731-8928cd95-c304-4920-9285-df3f3ea223ba.PNG">
 
 
@@ -9,7 +10,7 @@ This analysis is based on 4 datasets obtained from kaggle. The [Lung Cancer deat
 The purpose of the analysis is to determine if cigarette sales and CO<sub>2</sub> emissions are linked to lung cancer.  
 
 ## ETL Process ##
-The data was combined into a database. We used both the Pandas Library in Python and PostgreSQL to clean, sort, and merge our data to a state where we could use it for our visualizations and Machine Learning Models. 
+The data was combined into a PostgreSQL database. We used both the Pandas Library in Python and PostgreSQL to clean, sort, and merge our data to a state where we could use it for our visualizations and Machine Learning Models. Since the datasets we were using had a primary key "Country", it was fairly easy to get the data merged together. 
 
 ### Transitioning the Data to Javascript
 In order to make working with the data in Javascript easier, the pandas DataFrames were converted to JSON files using the Python json library and the json.dumps method. 
