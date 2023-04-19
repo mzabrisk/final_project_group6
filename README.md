@@ -32,6 +32,12 @@ We created a [webpage](https://mzabrisk.github.io/final_project_group6/dashboard
   * population
 
 * A tab containing customizable charts 
+
+  * total CO<sub>2</sub> emissions
+  * normalized CO<sub>2</sub> emissions
+  * cigarette sales
+  * lung cancer death rates ( male and female)
+  
 * A machine learning tab describing the creation and results of our model
 * A summary tab summarizing our overall project outcome
 * A resources page with links to all of the data and resources used
@@ -59,7 +65,7 @@ Upon closer evaluation, we decided that we want to look into incorporating a sup
 ## Successes
 * Working as a team and making great progress even though we are all on different schedules. 
 * Completing our work on time and holding eachother accountable for getting the project completed.
-* Creating a good looking webpage that is interactive to portrey our findings.
+* Creating a good looking webpage that is interactive to portray our findings.
 ## Results
 This far along in our project it is clear that cigarette sales are linked to lung cancer. Over the last 20 years or so, cigarette sales have gone down, but so has lung cancer deaths. According to our Machine Learning Model, the feature that predicts lung cancer the best is based on the country. We are thinking this has to do with the fact that first world countries have access to better advancements in medicine, while third world countries don't have that privilage. It is a little harder to tell if CO<sub>2</sub> emissions have a direct correlation to lung cancer rates, but that is one of the things we wanted to find out so it was worth looking into. 
 ## Summary
